@@ -14,8 +14,12 @@ body {
     padding: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
-    user-select: none; /* Anti-copy measure */
     line-height: 1.6;
+}
+
+/* Solo aplicamos restricción de selección de texto a los resultados, no al formulario para evitar bugs con inputs */
+.results-container, .modal-content, .intro-card p {
+    user-select: none;
 }
 
 /* Header */
@@ -124,6 +128,7 @@ body {
 .file-input {
     display: block;
     margin: 0 auto;
+    visibility: visible;
 }
 
 .file-hint {

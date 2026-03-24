@@ -163,10 +163,11 @@ function openTab(evt, tabName) {
 }
 
 // Manejo de tabs del input
-let currentInputType = 'text';
+window.currentInputType = 'text';
 
-function switchInputType(type) {
-    currentInputType = type;
+// Exponer la función al objeto global window para que sea accesible desde los atributos onclick del HTML
+window.switchInputType = function(type) {
+    window.currentInputType = type;
     const tabs = document.getElementsByClassName('input-tab');
 
     // Reset tabs
@@ -188,6 +189,11 @@ function switchInputType(type) {
     }
 }
 
+// Inicializar el estado correcto en load (solo para asegurarse)
+document.addEventListener("DOMContentLoaded", function() {
+    window.switchInputType('text');
+});
+
 // Interacción de Formulario
 document.getElementById('analyze-form').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -201,7 +207,7 @@ document.getElementById('analyze-form').addEventListener('submit', async functio
     formData.append('version', version);
     formData.append('language', document.getElementById('lang-selector').value);
 
-    if (currentInputType === 'text') {
+    if (window.currentInputType === 'text') {
         const text = document.getElementById('law-text').value;
         if (!text.trim()) {
             alert(document.getElementById('lang-selector').value === 'en' ? "Please enter the normative text." : "Por favor, ingresa el texto normativo.");
