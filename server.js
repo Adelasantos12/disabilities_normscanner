@@ -115,8 +115,19 @@ function loadContext() {
             const files = fs.readdirSync(instrumentsPath);
             for (const file of files) {
                 if (file.endsWith('.md')) {
-                    context += `\n--- INSTRUMENTO: ${file} ---\n`;
+                    context += `\n--- INSTRUMENT: ${file} ---\n`;
                     context += fs.readFileSync(path.join(instrumentsPath, file), 'utf-8') + '\n';
+                }
+            }
+        }
+
+        const caseLawPath = path.join(__dirname, 'references', 'case-law-notes');
+        if (fs.existsSync(caseLawPath)) {
+            const files = fs.readdirSync(caseLawPath);
+            for (const file of files) {
+                if (file.endsWith('.md')) {
+                    context += `\n--- CASE LAW NOTES: ${file} ---\n`;
+                    context += fs.readFileSync(path.join(caseLawPath, file), 'utf-8') + '\n';
                 }
             }
         }
@@ -126,7 +137,7 @@ function loadContext() {
             const files = fs.readdirSync(mexicoPath);
             for (const file of files) {
                 if (file.endsWith('.md')) {
-                    context += `\n--- CONTEXTO NACIONAL (MÉXICO): ${file} ---\n`;
+                    context += `\n--- COUNTRY LEGAL CONTEXT (MEXICO): ${file} ---\n`;
                     context += fs.readFileSync(path.join(mexicoPath, file), 'utf-8') + '\n';
                 }
             }
