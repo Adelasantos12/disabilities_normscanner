@@ -13,12 +13,20 @@ const translations = {
         hintPdfUpload: "Sube el documento oficial en formato PDF para mantener la referencia a los artículos originales.",
         btnSubmit: "Ejecutar Análisis",
         loaderText: "Aplicando metodología multinivel... Esto puede tomar un minuto.",
+        tabVisual: "Resumen Visual",
         tabStructure: "Estructura",
         tabExclusions: "Exclusiones",
         tabConventionality: "Convencionalidad",
         tabArgumentation: "Argumentación",
+        visualTitle: "Visualización de Datos y Métricas de Riesgo",
+        visualDesc: "Mapeo cuantitativo de los factores de riesgo de exclusión y compatibilidad normativa detectados.",
+        chartCompatTitle: "Índice de Compatibilidad Convencional",
+        chartRisksTitle: "Mapa de Riesgos Normativos",
         structureTitle: "Disección Estructural de la Ley",
         footerNote: "Nota: Este análisis automatizado es un punto de partida y requiere revisión experta. No sustituye el criterio jurídico profesional.",
+        ctaTitle: "¿Requiere un reporte profundo o institucional?",
+        ctaDesc: "El código fuente de esta herramienta es de acceso abierto bajo solicitud justificada. Si representa a un Think Tank, institución académica u organismo público y requiere un diagnóstico exhaustivo de política pública, póngase en contacto.",
+        ctaButton: "Solicitar Análisis Completo",
         modalTitle: "Nota Metodológica",
         modalSection1Title: "Niveles de Análisis",
         modalSection1Desc: "Este escáner trasciende la búsqueda de palabras clave. Evalúa el efecto jurídico real de la norma aplicando una metodología hermenéutica multinivel, la cual no es un simple análisis de coincidencias textuales, sino que contempla omisiones, exclusiones estructurales y sesgos implícitos.",
@@ -46,12 +54,20 @@ const translations = {
         hintPdfUpload: "Upload the official document in PDF format to maintain references to the original articles.",
         btnSubmit: "Execute Analysis",
         loaderText: "Applying multi-level methodology... This may take a minute.",
+        tabVisual: "Visual Summary",
         tabStructure: "Structure",
         tabExclusions: "Exclusions",
         tabConventionality: "Conventionality",
         tabArgumentation: "Argumentation",
+        visualTitle: "Data Visualisation and Risk Metrics",
+        visualDesc: "Quantitative mapping of the exclusion risk factors and normative compatibility detected.",
+        chartCompatTitle: "Conventional Compatibility Index",
+        chartRisksTitle: "Normative Risk Map",
         structureTitle: "Structural Dissection of the Law",
         footerNote: "Note: This automated analysis is a starting point and requires expert review. It does not replace professional legal judgement.",
+        ctaTitle: "Do you require an in-depth or institutional report?",
+        ctaDesc: "The source code for this tool is open-access upon justified request. If you represent a Think Tank, academic institution, or public body and require an exhaustive public policy diagnosis, please contact us.",
+        ctaButton: "Request Full Analysis",
         modalTitle: "Methodological Note",
         modalSection1Title: "Levels of Analysis",
         modalSection1Desc: "This scanner goes beyond keyword searching. It evaluates the real legal effect of the norm by applying a multi-level hermeneutic methodology, which is not a simple textual coincidence analysis, but contemplates omissions, structural exclusions, and implicit biases.",
@@ -205,7 +221,66 @@ document.getElementById('analyze-form').addEventListener('submit', async functio
 });
 
 // Renderizado de Resultados JSON en el DOM
+let chartInstance1 = null;
+let chartInstance2 = null;
+
 function renderResults(data) {
+    // === TAB: VISUAL (CHARTS) ===
+    if (data.metricas) {
+        if (chartInstance1) chartInstance1.destroy();
+        if (chartInstance2) chartInstance2.destroy();
+
+        const ctxCompat = document.getElementById('chart-compatibilidad').getContext('2d');
+        const compatScore = data.metricas.compatibilidad_convencional || 0;
+
+        chartInstance1 = new Chart(ctxCompat, {
+            type: 'doughnut',
+            data: {
+                labels: ['Compatibilidad', 'Brecha Convencional'],
+                datasets: [{
+                    data: [compatScore, 100 - compatScore],
+                    backgroundColor: ['#0a4d68', '#eaeaea'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        const ctxRiesgos = document.getElementById('chart-riesgos').getContext('2d');
+        const riesgoExclusion = data.metricas.riesgo_exclusion || 0;
+        const riesgoLenguaje = data.metricas.riesgo_lenguaje || 0;
+
+        chartInstance2 = new Chart(ctxRiesgos, {
+            type: 'bar',
+            data: {
+                labels: ['Riesgo de Exclusión', 'Riesgo de Lenguaje'],
+                datasets: [{
+                    label: 'Nivel de Riesgo (0-100)',
+                    data: [riesgoExclusion, riesgoLenguaje],
+                    backgroundColor: ['#d97706', '#dc2626'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
     // === TAB: ESTRUCTURA ===
     if (data.estructura) {
         document.getElementById('res-anatomia').textContent = data.estructura.anatomia_formal || "Sin datos.";
@@ -336,9 +411,9 @@ function toggleAccordion(element) {
 }
 
 // Protección contra atajos de teclado de copia (Complementa el user-select: none y oncontextmenu en HTML)
+// Se elimina el alert intrusivo de derechos de autor a petición del usuario, pero se mantiene la prevención técnica básica.
 document.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C' || e.key === 'p' || e.key === 'P')) {
         e.preventDefault();
-        alert("La copia y descarga directa está deshabilitada en esta herramienta por derechos de autor.");
     }
 });

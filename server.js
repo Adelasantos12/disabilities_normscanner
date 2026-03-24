@@ -98,6 +98,11 @@ INSTRUCCIONES IMPORTANTES DE FORMATO:
 Debes responder SIEMPRE con un objeto JSON válido, para que la interfaz web pueda renderizarlo correctamente en pestañas y paneles. No uses formato Markdown fuera del JSON. El JSON debe tener exactamente la siguiente estructura:
 
 {
+  "metricas": {
+    "compatibilidad_convencional": "Número entero del 0 al 100 indicando el nivel general de compatibilidad con los tratados",
+    "riesgo_exclusion": "Número entero del 0 al 100 indicando el nivel de riesgo de que la norma genere exclusiones (mayor número = mayor riesgo)",
+    "riesgo_lenguaje": "Número entero del 0 al 100 indicando el riesgo por uso de lenguaje estigmatizante o médico-asistencial (mayor número = mayor riesgo)"
+  },
   "estructura": {
     "anatomia_formal": "Texto sobre tipo de instrumento, jerarquía, fecha, etc.",
     "mapa_actores": [
@@ -158,16 +163,29 @@ app.post('/api/analyze', upload.single('lawPdf'), async (req, res) => {
         // Si el usuario subió un archivo, lo priorizamos
         if (req.file) {
             if (req.file.mimetype === 'application/pdf') {
-                const pdfData = await pdfParse(req.file.buffer);
-                text = pdfData.text;
-                console.log(`Extracted ${text.length} characters from uploaded PDF.`);
+                try {
+                    const pdfData = await pdfParse(req.file.buffer);
+                    text = pdfData.text;
+                    console.log(`Extracted ${text.length} characters from uploaded PDF.`);
+                } catch (pdfError) {
+                    console.error("Error parsing PDF:", pdfError);
+                    return res.status(400).json({ error: 'Could not read text from the provided PDF. It might be scanned or corrupted.' });
+                }
             } else {
                 return res.status(400).json({ error: 'Unsupported file type. Please upload a PDF.' });
             }
         }
 
         if (!text || text.trim() === '') {
-            return res.status(400).json({ error: 'No text provided for analysis. Please paste text or upload a valid PDF.' });
+            return res.status(400).json({ error: 'No text provided for analysis. Please paste text or upload a valid PDF containing text.' });
+        }
+
+        // OpenAI gpt-4o-mini context window is 128k tokens (~500k chars).
+        // Let's safely truncate to ~300,000 chars to leave room for the system prompt and output.
+        const MAX_CHARS = 300000;
+        if (text.length > MAX_CHARS) {
+            console.log(`Truncating text from ${text.length} to ${MAX_CHARS} characters.`);
+            text = text.substring(0, MAX_CHARS) + "\n\n...[TEXT TRUNCATED DUE TO LENGTH]...";
         }
 
         if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'dummy_key') {

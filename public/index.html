@@ -6,6 +6,7 @@
     <title>Análisis Normativo | By Easy</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body oncontextmenu="return false;">
     <header class="navbar">
@@ -60,13 +61,29 @@
 
         <div id="results" class="results-container" style="display: none;">
             <div class="tabs">
-                <button class="tablink active" onclick="openTab(event, 'Estructura')" data-i18n="tabStructure">Estructura</button>
+                <button class="tablink active" onclick="openTab(event, 'Visual')" data-i18n="tabVisual">Resumen Visual</button>
+                <button class="tablink" onclick="openTab(event, 'Estructura')" data-i18n="tabStructure">Estructura</button>
                 <button class="tablink" onclick="openTab(event, 'Exclusiones')" data-i18n="tabExclusions">Exclusiones</button>
                 <button class="tablink" onclick="openTab(event, 'Convencionalidad')" data-i18n="tabConventionality">Convencionalidad</button>
                 <button class="tablink" onclick="openTab(event, 'Argumentacion')" data-i18n="tabArgumentation">Argumentación</button>
             </div>
 
-            <div id="Estructura" class="tabcontent" style="display: block;">
+            <div id="Visual" class="tabcontent" style="display: block;">
+                <h3 data-i18n="visualTitle">Visualización de Datos y Métricas de Riesgo</h3>
+                <p data-i18n="visualDesc">Mapeo cuantitativo de los factores de riesgo de exclusión y compatibilidad normativa detectados.</p>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h4 data-i18n="chartCompatTitle">Índice de Compatibilidad Convencional</h4>
+                        <canvas id="chart-compatibilidad"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4 data-i18n="chartRisksTitle">Mapa de Riesgos Normativos</h4>
+                        <canvas id="chart-riesgos"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Estructura" class="tabcontent">
                 <h3 data-i18n="structureTitle">Disección Estructural de la Ley</h3>
 
                 <div class="section-block">
@@ -158,6 +175,20 @@
             </div>
         </div>
     </main>
+
+    <!-- Professional CTA Footer -->
+    <footer class="institutional-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4 data-i18n="ctaTitle">¿Requiere un reporte profundo o institucional?</h4>
+                <p data-i18n="ctaDesc">El código fuente de esta herramienta es de acceso abierto bajo solicitud justificada. Si representa a un Think Tank, institución académica u organismo público y requiere un diagnóstico exhaustivo de política pública, póngase en contacto.</p>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:adela.santos@graduateinstitute.ch" class="btn btn-secondary" data-i18n="ctaButton">Solicitar Análisis Completo</a>
+                <p class="email-text">adela.santos@graduateinstitute.ch</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Modal Nota Metodologica -->
     <div id="methodologyModal" class="modal">
