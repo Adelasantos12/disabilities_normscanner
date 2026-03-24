@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Análisis Normativo | By Easy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body oncontextmenu="return false;">
+    <header class="navbar">
+        <div class="brand">By Easy - <span class="subtitle">Adela Santos, PhD</span></div>
+        <div class="nav-title">Herramienta de Análisis Normativo Profundo</div>
+    </header>
+
+    <main class="container">
+        <div class="card intro-card">
+            <h2>Ingreso de Texto Legislativo</h2>
+            <p>Pega a continuación el texto de la ley, decreto o instrumento normativo que deseas evaluar. El sistema aplicará una metodología hermenéutica multinivel para detectar brechas de convencionalidad, omisiones estructurales y exclusiones.</p>
+
+            <form id="analyze-form">
+                <div class="form-group">
+                    <label for="law-version">Versión / Fecha de última reforma (Opcional):</label>
+                    <input type="text" id="law-version" placeholder="Ej. Última reforma DOF 24-03-2023">
+                </div>
+                <div class="form-group">
+                    <label for="law-text">Texto normativo:</label>
+                    <textarea id="law-text" rows="10" required placeholder="Pega el articulado aquí..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Ejecutar Análisis</button>
+            </form>
+        </div>
+
+        <div id="loader" class="loader-container" style="display: none;">
+            <div class="spinner"></div>
+            <p>Aplicando metodología multinivel... Esto puede tomar un minuto.</p>
+        </div>
+
+        <div id="results" class="results-container" style="display: none;">
+            <div class="tabs">
+                <button class="tablink active" onclick="openTab(event, 'Estructura')">Estructura</button>
+                <button class="tablink" onclick="openTab(event, 'Exclusiones')">Exclusiones</button>
+                <button class="tablink" onclick="openTab(event, 'Convencionalidad')">Convencionalidad</button>
+                <button class="tablink" onclick="openTab(event, 'Argumentacion')">Argumentación</button>
+            </div>
+
+            <div id="Estructura" class="tabcontent" style="display: block;">
+                <h3>Disección Estructural de la Ley</h3>
+
+                <div class="section-block">
+                    <h4>Anatomía Formal</h4>
+                    <p id="res-anatomia"></p>
+                </div>
+
+                <div class="section-block">
+                    <h4>Mapa de Actores Normativos</h4>
+                    <div class="table-responsive">
+                        <table class="data-table" id="table-actores">
+                            <thead>
+                                <tr>
+                                    <th>Actor</th>
+                                    <th>Tipo</th>
+                                    <th>Obligaciones</th>
+                                    <th>Facultades</th>
+                                    <th>Exigibilidad</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="section-block">
+                        <h4>Flujo de Responsabilidad</h4>
+                        <p id="res-flujo"></p>
+                    </div>
+                    <div class="section-block">
+                        <h4>Mecanismos de Exigibilidad</h4>
+                        <p id="res-exigibilidad"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Exclusiones" class="tabcontent">
+                <h3>Análisis de Omisiones y Exclusiones Implícitas</h3>
+
+                <div class="accordion" id="acc-exclusiones">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+
+            <div id="Convencionalidad" class="tabcontent">
+                <h3>Análisis de Convencionalidad</h3>
+
+                <div class="section-block">
+                    <h4>Bloque de Convencionalidad</h4>
+                    <p id="res-bloque"></p>
+                </div>
+
+                <div class="section-block">
+                    <h4>Tabla de Brechas</h4>
+                    <div class="table-responsive">
+                        <table class="data-table" id="table-brechas">
+                            <thead>
+                                <tr>
+                                    <th>Estándar Internacional</th>
+                                    <th>Disposición Ley</th>
+                                    <th>Tipo de Brecha</th>
+                                    <th>Gravedad</th>
+                                    <th>Argumentación</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Argumentacion" class="tabcontent">
+                <h3>Construcción de Argumentación Teórica</h3>
+                <p>Propuestas de argumentación estructuradas para litigio o cabildeo.</p>
+
+                <div id="list-argumentos" class="argument-list">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+
+            <div class="conclusion-block">
+                <h4>Síntesis del Análisis</h4>
+                <p id="res-conclusion"></p>
+            </div>
+
+            <div class="footer-note">
+                <small>Nota: Este análisis automatizado es un punto de partida y requiere revisión experta. No sustituye el criterio jurídico profesional.</small>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
