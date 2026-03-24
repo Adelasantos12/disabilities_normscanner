@@ -76,22 +76,27 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || 'dummy_key', // Railway will provide this via env variables
 });
 
-// Load methodology and framework files from `references`
+// Load methodology and framework files from `references` and `docs`
 function loadContext() {
     let context = "";
 
     try {
-        const skillPath = path.join(__dirname, 'SKILL.md');
-        if (fs.existsSync(skillPath)) {
-            let skillContent = fs.readFileSync(skillPath, 'utf-8');
-            // Remove Claude specific instruction references, keeping the core methodology
-            skillContent = skillContent.replace(/Usa este skill SIEMPRE que/g, "Usa esta herramienta SIEMPRE que");
-            skillContent = skillContent.replace(/Este skill implementa/g, "Esta herramienta implementa");
-            skillContent = skillContent.replace(/Usar `web_fetch`/g, "Extraer");
-            skillContent = skillContent.replace(/Presentar usando `visualize:show_widget` con:/g, "Estructura tu respuesta para que la interfaz pueda presentar:");
-            skillContent = skillContent.replace(/Ofrecer como descarga en Word \(usar skill `docx`\)/g, "");
-            skillContent = skillContent.replace(/Ofrecer como Word descargable/g, "");
-            context += `\n--- METODOLOGÍA GENERAL (SKILL.md) ---\n${skillContent}\n`;
+        const protocolPath = path.join(__dirname, 'normative-analysis-protocol.md');
+        if (fs.existsSync(protocolPath)) {
+            const protocolContent = fs.readFileSync(protocolPath, 'utf-8');
+            context += `\n--- OPERATIONAL PROTOCOL (normative-analysis-protocol.md) ---\n${protocolContent}\n`;
+        }
+
+        const methodologyPath = path.join(__dirname, 'docs', 'methodological-note.md');
+        if (fs.existsSync(methodologyPath)) {
+            const methodologyContent = fs.readFileSync(methodologyPath, 'utf-8');
+            context += `\n--- METHODOLOGICAL NOTE (methodological-note.md) ---\n${methodologyContent}\n`;
+        }
+
+        const terminologyPath = path.join(__dirname, 'docs', 'terminology-guide.md');
+        if (fs.existsSync(terminologyPath)) {
+            const terminologyContent = fs.readFileSync(terminologyPath, 'utf-8');
+            context += `\n--- TERMINOLOGY GUIDE (terminology-guide.md) ---\n${terminologyContent}\n`;
         }
 
         const frameworksPath = path.join(__dirname, 'references', 'frameworks');
@@ -136,11 +141,11 @@ function loadContext() {
 const systemContext = loadContext();
 
 const SYSTEM_PROMPT = `
-Eres la Herramienta de Análisis Normativo By Easy - (Adela Santos, PhD), un sistema experto en análisis jurídico normativo profundo de leyes y textos legislativos.
-Aplica rigurosamente la metodología descrita a continuación para analizar el texto legislativo proporcionado por el usuario.
+Eres NormTrace, una herramienta de análisis jurídico normativo profundo asistida por IA (By Easy - Adela Santos, PhD).
+Tu objetivo es analizar rigurosamente la norma nacional contra los estándares internacionales, siguiendo de forma estricta las instrucciones del OPERATIONAL PROTOCOL (normative-analysis-protocol.md) y empleando la terminología fijada en la TERMINOLOGY GUIDE (terminology-guide.md). No inventes términos ni uses "compliance" si la guía dicta "legal compatibility".
 
 INSTRUCCIONES DE TONO Y LENGUAJE (OBLIGATORIAS):
-- **Lenguaje Relajado y Condicional:** NUNCA afirmes categóricamente que una norma "está mal", "es discriminatoria" o "viola" un tratado. En su lugar, utiliza siempre construcciones condicionales y constructivas: "podría no ser incluyente porque...", "podría ser discriminatorio por...", "se sugiere revisar", "podría existir un área de oportunidad para la armonización convencional", "se observa una posible tensión normativa".
+- **Lenguaje Constructivo y Académico:** Aplica un tono jurídico, constructivo y condicional. En lugar de emitir juicios tajantes ("está mal", "viola", "es discriminatoria"), utiliza expresiones como: "se observa una posible tensión normativa", "podría existir un área de oportunidad para la armonización convencional", "podría no ser incluyente en la medida en que omite...", "se sugiere revisar a la luz del estándar...".
 - **Cita del Texto Original:** Siempre que señales un hallazgo, debes incluir la cita literal breve del artículo (ej. "En el artículo X se señala que '...' lo cual podría...") para que el usuario pueda cotejarlo con el documento original cargado. El objetivo es evidenciar oportunidades de mejora para el *compliance* convencional, no emitir condenas judiciales.
 
 ${systemContext}

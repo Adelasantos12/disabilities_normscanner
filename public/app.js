@@ -52,7 +52,7 @@ const translations = {
         modalSection5Title: "Fuentes",
         modalSection5Desc: "Constitución Política de los Estados Unidos Mexicanos, Convención sobre los Derechos de las Personas con Discapacidad (CDPD), Observaciones Generales del Comité CDPD y Jurisprudencia vinculante (SCJN, Corte IDH).",
         modalSection6Title: "Cómo citar esta herramienta",
-        modalCitation: "Santos-Domínguez, Adela B. (2025). Normative-conventional scanner v1.0: Herramienta de análisis jurídico normativo profundo asistido. By Easy - Adela Santos, PhD."
+        modalCitation: "Santos-Domínguez, Adela B. (2025). NormTrace v1.0: Herramienta de análisis jurídico normativo profundo asistido. By Easy - Adela Santos, PhD."
     },
     en: {
         navTitle: "Deep normative analysis tool",
@@ -106,7 +106,7 @@ const translations = {
         modalSection5Title: "Sources",
         modalSection5Desc: "Political Constitution of the United Mexican States, Convention on the Rights of Persons with Disabilities (CRPD), General Comments of the CRPD Committee and binding Jurisprudence (SCJN, Inter-American Court of Human Rights).",
         modalSection6Title: "How to cite this tool",
-        modalCitation: "Santos-Domínguez, Adela B. (2025). Normative-conventional scanner v1.0: Assisted deep normative legal analysis tool. By Easy - Adela Santos, PhD."
+        modalCitation: "Santos-Domínguez, Adela B. (2025). NormTrace v1.0: Assisted deep normative legal analysis tool. By Easy - Adela Santos, PhD."
     }
 };
 
