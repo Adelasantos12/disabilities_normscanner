@@ -10,42 +10,49 @@
 <body oncontextmenu="return false;">
     <header class="navbar">
         <div class="brand">By Easy - <span class="subtitle">Adela Santos, PhD</span></div>
-        <div class="nav-title">Herramienta de Análisis Normativo Profundo</div>
+        <div class="nav-title" data-i18n="navTitle">Herramienta de Análisis Normativo Profundo</div>
+        <div class="nav-actions">
+            <button class="btn btn-secondary btn-sm" id="btn-methodology" data-i18n="btnMethodology">Nota Metodológica</button>
+            <select id="lang-selector" class="lang-selector">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
     </header>
 
     <main class="container">
         <div class="card intro-card">
-            <h2>Ingreso de Texto Legislativo</h2>
-            <p>Pega a continuación el texto de la ley, decreto o instrumento normativo que deseas evaluar. El sistema aplicará una metodología hermenéutica multinivel para detectar brechas de convencionalidad, omisiones estructurales y exclusiones.</p>
+            <h2 data-i18n="introTitle">Ingreso de Texto Legislativo</h2>
+            <p data-i18n="introDesc">Pega a continuación el texto de la ley, decreto o instrumento normativo que deseas evaluar. El sistema aplicará una metodología hermenéutica multinivel para detectar brechas de convencionalidad, omisiones estructurales y exclusiones.</p>
 
             <form id="analyze-form">
                 <div class="form-group">
-                    <label for="law-version">Versión / Fecha de última reforma (Opcional):</label>
+                    <label for="law-version" data-i18n="labelVersion">Versión / Fecha de última reforma (Opcional):</label>
                     <input type="text" id="law-version" placeholder="Ej. Última reforma DOF 24-03-2023">
                 </div>
                 <div class="form-group">
-                    <label for="law-text">Texto normativo:</label>
+                    <label for="law-text" data-i18n="labelLawText">Texto normativo:</label>
                     <textarea id="law-text" rows="10" required placeholder="Pega el articulado aquí..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" id="submit-btn">Ejecutar Análisis</button>
+                <button type="submit" class="btn btn-primary" id="submit-btn" data-i18n="btnSubmit">Ejecutar Análisis</button>
             </form>
         </div>
 
         <div id="loader" class="loader-container" style="display: none;">
             <div class="spinner"></div>
-            <p>Aplicando metodología multinivel... Esto puede tomar un minuto.</p>
+            <p data-i18n="loaderText">Aplicando metodología multinivel... Esto puede tomar un minuto.</p>
         </div>
 
         <div id="results" class="results-container" style="display: none;">
             <div class="tabs">
-                <button class="tablink active" onclick="openTab(event, 'Estructura')">Estructura</button>
-                <button class="tablink" onclick="openTab(event, 'Exclusiones')">Exclusiones</button>
-                <button class="tablink" onclick="openTab(event, 'Convencionalidad')">Convencionalidad</button>
-                <button class="tablink" onclick="openTab(event, 'Argumentacion')">Argumentación</button>
+                <button class="tablink active" onclick="openTab(event, 'Estructura')" data-i18n="tabStructure">Estructura</button>
+                <button class="tablink" onclick="openTab(event, 'Exclusiones')" data-i18n="tabExclusions">Exclusiones</button>
+                <button class="tablink" onclick="openTab(event, 'Convencionalidad')" data-i18n="tabConventionality">Convencionalidad</button>
+                <button class="tablink" onclick="openTab(event, 'Argumentacion')" data-i18n="tabArgumentation">Argumentación</button>
             </div>
 
             <div id="Estructura" class="tabcontent" style="display: block;">
-                <h3>Disección Estructural de la Ley</h3>
+                <h3 data-i18n="structureTitle">Disección Estructural de la Ley</h3>
 
                 <div class="section-block">
                     <h4>Anatomía Formal</h4>
@@ -132,10 +139,45 @@
             </div>
 
             <div class="footer-note">
-                <small>Nota: Este análisis automatizado es un punto de partida y requiere revisión experta. No sustituye el criterio jurídico profesional.</small>
+                <small data-i18n="footerNote">Nota: Este análisis automatizado es un punto de partida y requiere revisión experta. No sustituye el criterio jurídico profesional.</small>
             </div>
         </div>
     </main>
+
+    <!-- Modal Nota Metodologica -->
+    <div id="methodologyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2 data-i18n="modalTitle">Nota Metodológica</h2>
+
+            <div class="modal-body">
+                <h3 data-i18n="modalSection1Title">Niveles de Análisis</h3>
+                <p data-i18n="modalSection1Desc">Este escáner trasciende la búsqueda de palabras clave. Evalúa el efecto jurídico real de la norma aplicando una metodología hermenéutica multinivel, la cual no es un simple análisis de coincidencias textuales, sino que contempla omisiones, exclusiones estructurales y sesgos implícitos.</p>
+
+                <h3 data-i18n="modalSection2Title">Elementos del Marco Jurídico</h3>
+                <p data-i18n="modalSection2Desc">Analizamos anatomía formal, mapa de actores (obligaciones, facultades, exigibilidad), exclusiones explícitas o implícitas (interseccionalidad, perspectiva de género, pueblos indígenas) y el control de convencionalidad basado en la progresividad, no regresividad y máxima protección.</p>
+
+                <h3 data-i18n="modalSection3Title">Supuestos Teóricos</h3>
+                <ul data-i18n="modalSection3List">
+                    <li><strong>Compliance e Internalización:</strong> Evaluación de cómo los Estados adaptan y aplican los estándares internacionales en la normativa local.</li>
+                    <li><strong>Relevancia:</strong> La omisión o silencio normativo es considerado un dato analítico tan importante como el texto mismo.</li>
+                </ul>
+
+                <h3 data-i18n="modalSection4Title">Limitaciones</h3>
+                <ul data-i18n="modalSection4List">
+                    <li>En su versión 1.0, esta herramienta está diseñada específicamente para analizar el marco jurídico de <strong>México</strong>.</li>
+                    <li>El caso piloto actual está estructurado en torno a la legislación de Personas con Discapacidad (CDPD vs. LGIPD).</li>
+                </ul>
+
+                <h3 data-i18n="modalSection5Title">Fuentes</h3>
+                <p data-i18n="modalSection5Desc">Constitución Política de los Estados Unidos Mexicanos, Convención sobre los Derechos de las Personas con Discapacidad (CDPD), Observaciones Generales del Comité CDPD y Jurisprudencia vinculante (SCJN, Corte IDH).</p>
+
+                <hr>
+                <h3 data-i18n="modalSection6Title">Cómo citar esta herramienta</h3>
+                <p class="citation" data-i18n="modalCitation">Santos-Domínguez, Adela B. (2025). Normative-conventional scanner v1.0: Herramienta de análisis jurídico normativo profundo asistido. By Easy - Adela Santos, PhD.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>

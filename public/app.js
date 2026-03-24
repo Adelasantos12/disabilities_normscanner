@@ -1,3 +1,101 @@
+// Diccionario de Traducciones
+const translations = {
+    es: {
+        navTitle: "Herramienta de Análisis Normativo Profundo",
+        btnMethodology: "Nota Metodológica",
+        introTitle: "Ingreso de Texto Legislativo",
+        introDesc: "Pega a continuación el texto de la ley, decreto o instrumento normativo que deseas evaluar. El sistema aplicará una metodología hermenéutica multinivel para detectar brechas de convencionalidad, omisiones estructurales y exclusiones.",
+        labelVersion: "Versión / Fecha de última reforma (Opcional):",
+        labelLawText: "Texto normativo:",
+        btnSubmit: "Ejecutar Análisis",
+        loaderText: "Aplicando metodología multinivel... Esto puede tomar un minuto.",
+        tabStructure: "Estructura",
+        tabExclusions: "Exclusiones",
+        tabConventionality: "Convencionalidad",
+        tabArgumentation: "Argumentación",
+        structureTitle: "Disección Estructural de la Ley",
+        footerNote: "Nota: Este análisis automatizado es un punto de partida y requiere revisión experta. No sustituye el criterio jurídico profesional.",
+        modalTitle: "Nota Metodológica",
+        modalSection1Title: "Niveles de Análisis",
+        modalSection1Desc: "Este escáner trasciende la búsqueda de palabras clave. Evalúa el efecto jurídico real de la norma aplicando una metodología hermenéutica multinivel, la cual no es un simple análisis de coincidencias textuales, sino que contempla omisiones, exclusiones estructurales y sesgos implícitos.",
+        modalSection2Title: "Elementos del Marco Jurídico",
+        modalSection2Desc: "Analizamos anatomía formal, mapa de actores (obligaciones, facultades, exigibilidad), exclusiones explícitas o implícitas (interseccionalidad, perspectiva de género, pueblos indígenas) y el control de convencionalidad basado en la progresividad, no regresividad y máxima protección.",
+        modalSection3Title: "Supuestos Teóricos",
+        modalSection3List: "<li><strong>Compliance e Internalización:</strong> Evaluación de cómo los Estados adaptan y aplican los estándares internacionales en la normativa local.</li><li><strong>Relevancia:</strong> La omisión o silencio normativo es considerado un dato analítico tan importante como el texto mismo.</li>",
+        modalSection4Title: "Limitaciones",
+        modalSection4List: "<li>En su versión 1.0, esta herramienta está diseñada específicamente para analizar el marco jurídico de <strong>México</strong>.</li><li>El caso piloto actual está estructurado en torno a la legislación de Personas con Discapacidad (CDPD vs. LGIPD).</li>",
+        modalSection5Title: "Fuentes",
+        modalSection5Desc: "Constitución Política de los Estados Unidos Mexicanos, Convención sobre los Derechos de las Personas con Discapacidad (CDPD), Observaciones Generales del Comité CDPD y Jurisprudencia vinculante (SCJN, Corte IDH).",
+        modalSection6Title: "Cómo citar esta herramienta",
+        modalCitation: "Santos-Domínguez, Adela B. (2025). Normative-conventional scanner v1.0: Herramienta de análisis jurídico normativo profundo asistido. By Easy - Adela Santos, PhD."
+    },
+    en: {
+        navTitle: "Deep Normative Analysis Tool",
+        btnMethodology: "Methodological Note",
+        introTitle: "Input Legislative Text",
+        introDesc: "Paste the text of the law, decree, or normative instrument you wish to evaluate below. The system will apply a multi-level hermeneutic methodology to detect gaps in conventionality, structural omissions, and exclusions.",
+        labelVersion: "Version / Date of last reform (Optional):",
+        labelLawText: "Normative text:",
+        btnSubmit: "Execute Analysis",
+        loaderText: "Applying multi-level methodology... This may take a minute.",
+        tabStructure: "Structure",
+        tabExclusions: "Exclusions",
+        tabConventionality: "Conventionality",
+        tabArgumentation: "Argumentation",
+        structureTitle: "Structural Dissection of the Law",
+        footerNote: "Note: This automated analysis is a starting point and requires expert review. It does not replace professional legal judgement.",
+        modalTitle: "Methodological Note",
+        modalSection1Title: "Levels of Analysis",
+        modalSection1Desc: "This scanner goes beyond keyword searching. It evaluates the real legal effect of the norm by applying a multi-level hermeneutic methodology, which is not a simple textual coincidence analysis, but contemplates omissions, structural exclusions, and implicit biases.",
+        modalSection2Title: "Elements of the Legal Framework",
+        modalSection2Desc: "We analyse formal anatomy, actor mapping (obligations, powers, enforceability), explicit or implicit exclusions (intersectionality, gender perspective, indigenous peoples) and the control of conventionality based on progressivity, non-regressivity, and maximum protection.",
+        modalSection3Title: "Theoretical Assumptions",
+        modalSection3List: "<li><strong>Compliance and Internalisation:</strong> Evaluation of how States adapt and apply international standards in local regulations.</li><li><strong>Relevance:</strong> Normative omission or silence is considered an analytical datum as important as the text itself.</li>",
+        modalSection4Title: "Limitations",
+        modalSection4List: "<li>In its version 1.0, this tool is specifically designed to analyse the legal framework of <strong>Mexico</strong>.</li><li>The current pilot case is structured around the legislation of Persons with Disabilities (CRPD vs. LGIPD).</li>",
+        modalSection5Title: "Sources",
+        modalSection5Desc: "Political Constitution of the United Mexican States, Convention on the Rights of Persons with Disabilities (CRPD), General Comments of the CRPD Committee and binding Jurisprudence (SCJN, Inter-American Court of Human Rights).",
+        modalSection6Title: "How to cite this tool",
+        modalCitation: "Santos-Domínguez, Adela B. (2025). Normative-conventional scanner v1.0: Assisted deep normative legal analysis tool. By Easy - Adela Santos, PhD."
+    }
+};
+
+// Cambio de idioma
+document.getElementById('lang-selector').addEventListener('change', function(e) {
+    const lang = e.target.value;
+    const elements = document.querySelectorAll('[data-i18n]');
+
+    elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            if (el.tagName === 'UL') {
+                el.innerHTML = translations[lang][key]; // Allow HTML for lists
+            } else {
+                el.textContent = translations[lang][key];
+            }
+        }
+    });
+});
+
+// Manejo del Modal (Nota Metodológica)
+const modal = document.getElementById("methodologyModal");
+const btnMethodology = document.getElementById("btn-methodology");
+const spanClose = document.getElementById("closeModal");
+
+btnMethodology.onclick = function() {
+    modal.style.display = "block";
+}
+
+spanClose.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 // Manejo de Tabs
 function openTab(evt, tabName) {
     const tabcontent = document.getElementsByClassName("tabcontent");
