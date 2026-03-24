@@ -164,20 +164,45 @@ app.post('/api/analyze', upload.single('lawPdf'), async (req, res) => {
         if (req.file) {
             if (req.file.mimetype === 'application/pdf') {
                 try {
-                    const pdfData = await pdfParse(req.file.buffer);
-                    text = pdfData.text;
+                    // pdf-parse con options para ignorar ciertos errores de xref
+                    const options = {
+                        pagerender: function(pageData) {
+                            return pageData.getTextContent().then(function(textContent) {
+                                let lastY, text = '';
+                                for (let item of textContent.items) {
+                                    if (lastY == item.transform[5] || !lastY){
+                                        text += item.str;
+                                    } else {
+                                        text += '\n' + item.str;
+                                    }
+                                    lastY = item.transform[5];
+                                }
+                                return text;
+                            });
+                        }
+                    };
+                    const pdfData = await pdfParse(req.file.buffer, options);
+                    text = pdfData.text || "";
                     console.log(`Extracted ${text.length} characters from uploaded PDF.`);
+
+                    if (text.trim().length < 50) {
+                         // Likely a scanned document without an embedded text layer
+                         return res.status(400).json({
+                             error: `El documento parece ser un PDF escaneado (una imagen) o estar protegido. Solo se extrajeron ${text.trim().length} caracteres legibles. El análisis requiere texto seleccionable. Intente usar la pestaña "Pegar Texto" y asegúrese de copiar el texto real.`
+                         });
+                    }
                 } catch (pdfError) {
-                    console.error("Error parsing PDF:", pdfError);
-                    return res.status(400).json({ error: 'Could not read text from the provided PDF. It might be scanned or corrupted.' });
+                    console.error("Error parsing PDF with pdf-parse:", pdfError);
+                    // Devolver el error sin fallar de manera crítica
+                    return res.status(400).json({ error: 'No se pudo leer el texto del archivo PDF proporcionado. Podría estar escaneado como imagen, protegido con contraseña o dañado. Intente copiar el texto directamente en la pestaña "Pegar Texto".' });
                 }
             } else {
-                return res.status(400).json({ error: 'Unsupported file type. Please upload a PDF.' });
+                return res.status(400).json({ error: 'El archivo debe ser un PDF válido.' });
             }
         }
 
         if (!text || text.trim() === '') {
-            return res.status(400).json({ error: 'No text provided for analysis. Please paste text or upload a valid PDF containing text.' });
+            return res.status(400).json({ error: 'No se detectó texto. Por favor, asegúrese de pegar el texto o subir un archivo PDF que contenga texto seleccionable.' });
         }
 
         // OpenAI gpt-4o-mini context window is 128k tokens (~500k chars).
