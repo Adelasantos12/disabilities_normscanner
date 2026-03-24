@@ -6,7 +6,11 @@ const translations = {
         introTitle: "Ingreso de Texto Legislativo",
         introDesc: "Pega a continuación el texto de la ley, decreto o instrumento normativo que deseas evaluar. El sistema aplicará una metodología hermenéutica multinivel para detectar brechas de convencionalidad, omisiones estructurales y exclusiones.",
         labelVersion: "Versión / Fecha de última reforma (Opcional):",
+        tabPasteText: "Pegar Texto",
+        tabUploadPdf: "Subir PDF",
         labelLawText: "Texto normativo:",
+        labelLawPdf: "Archivo PDF:",
+        hintPdfUpload: "Sube el documento oficial en formato PDF para mantener la referencia a los artículos originales.",
         btnSubmit: "Ejecutar Análisis",
         loaderText: "Aplicando metodología multinivel... Esto puede tomar un minuto.",
         tabStructure: "Estructura",
@@ -35,7 +39,11 @@ const translations = {
         introTitle: "Input Legislative Text",
         introDesc: "Paste the text of the law, decree, or normative instrument you wish to evaluate below. The system will apply a multi-level hermeneutic methodology to detect gaps in conventionality, structural omissions, and exclusions.",
         labelVersion: "Version / Date of last reform (Optional):",
+        tabPasteText: "Paste Text",
+        tabUploadPdf: "Upload PDF",
         labelLawText: "Normative text:",
+        labelLawPdf: "PDF File:",
+        hintPdfUpload: "Upload the official document in PDF format to maintain references to the original articles.",
         btnSubmit: "Execute Analysis",
         loaderText: "Applying multi-level methodology... This may take a minute.",
         tabStructure: "Structure",
@@ -112,19 +120,58 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
+// Manejo de tabs del input
+let currentInputType = 'text';
+
+function switchInputType(type) {
+    currentInputType = type;
+    const tabs = document.getElementsByClassName('input-tab');
+
+    // Reset tabs
+    tabs[0].classList.remove('active');
+    tabs[1].classList.remove('active');
+
+    if (type === 'text') {
+        tabs[0].classList.add('active');
+        document.getElementById('input-text-container').style.display = 'block';
+        document.getElementById('input-file-container').style.display = 'none';
+        document.getElementById('law-text').setAttribute('required', 'true');
+        document.getElementById('law-pdf').removeAttribute('required');
+    } else {
+        tabs[1].classList.add('active');
+        document.getElementById('input-text-container').style.display = 'none';
+        document.getElementById('input-file-container').style.display = 'block';
+        document.getElementById('law-text').removeAttribute('required');
+        document.getElementById('law-pdf').setAttribute('required', 'true');
+    }
+}
+
 // Interacción de Formulario
 document.getElementById('analyze-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const text = document.getElementById('law-text').value;
     const version = document.getElementById('law-version').value;
     const submitBtn = document.getElementById('submit-btn');
     const loader = document.getElementById('loader');
     const resultsDiv = document.getElementById('results');
 
-    if (!text.trim()) {
-        alert("Por favor, ingresa el texto normativo.");
-        return;
+    const formData = new FormData();
+    formData.append('version', version);
+
+    if (currentInputType === 'text') {
+        const text = document.getElementById('law-text').value;
+        if (!text.trim()) {
+            alert(document.getElementById('lang-selector').value === 'en' ? "Please enter the normative text." : "Por favor, ingresa el texto normativo.");
+            return;
+        }
+        formData.append('text', text);
+    } else {
+        const fileInput = document.getElementById('law-pdf');
+        if (fileInput.files.length === 0) {
+            alert(document.getElementById('lang-selector').value === 'en' ? "Please upload a PDF file." : "Por favor, sube un archivo PDF.");
+            return;
+        }
+        formData.append('lawPdf', fileInput.files[0]);
     }
 
     // UI Updates
@@ -135,8 +182,7 @@ document.getElementById('analyze-form').addEventListener('submit', async functio
     try {
         const response = await fetch('/api/analyze', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text, version })
+            body: formData // No set Content-Type header; browser handles it with FormData
         });
 
         const data = await response.json();

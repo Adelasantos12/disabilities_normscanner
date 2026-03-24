@@ -3,14 +3,21 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
+const pdfParse = require('pdf-parse');
 const { OpenAI } = require('openai');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configurar multer para almacenar el archivo en memoria (no escribirlo a disco permanentemente)
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage, limits: { fileSize: 10 * 1024 * 1024 } }); // Límite de 10 MB para PDF
+
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.static('public'));
 
 // Configure OpenAI API
@@ -81,6 +88,10 @@ const SYSTEM_PROMPT = `
 Eres la Herramienta de Análisis Normativo By Easy - (Adela Santos, PhD), un sistema experto en análisis jurídico normativo profundo de leyes y textos legislativos.
 Aplica rigurosamente la metodología descrita a continuación para analizar el texto legislativo proporcionado por el usuario.
 
+INSTRUCCIONES DE TONO Y LENGUAJE (OBLIGATORIAS):
+- **Lenguaje Relajado y Condicional:** NUNCA afirmes categóricamente que una norma "está mal", "es discriminatoria" o "viola" un tratado. En su lugar, utiliza siempre construcciones condicionales y constructivas: "podría no ser incluyente porque...", "podría ser discriminatorio por...", "se sugiere revisar", "podría existir un área de oportunidad para la armonización convencional", "se observa una posible tensión normativa".
+- **Cita del Texto Original:** Siempre que señales un hallazgo, debes incluir la cita literal breve del artículo (ej. "En el artículo X se señala que '...' lo cual podría...") para que el usuario pueda cotejarlo con el documento original cargado. El objetivo es evidenciar oportunidades de mejora para el *compliance* convencional, no emitir condenas judiciales.
+
 ${systemContext}
 
 INSTRUCCIONES IMPORTANTES DE FORMATO:
@@ -139,12 +150,24 @@ Debes responder SIEMPRE con un objeto JSON válido, para que la interfaz web pue
 Asegúrate de escapar las comillas dobles internas y devolver un JSON estricto. Analiza el texto proporcionado a continuación.
 `;
 
-app.post('/api/analyze', async (req, res) => {
+app.post('/api/analyze', upload.single('lawPdf'), async (req, res) => {
     try {
-        const { text, version } = req.body;
+        let text = req.body.text || "";
+        const version = req.body.version || "";
 
-        if (!text) {
-            return res.status(400).json({ error: 'No text provided for analysis.' });
+        // Si el usuario subió un archivo, lo priorizamos
+        if (req.file) {
+            if (req.file.mimetype === 'application/pdf') {
+                const pdfData = await pdfParse(req.file.buffer);
+                text = pdfData.text;
+                console.log(`Extracted ${text.length} characters from uploaded PDF.`);
+            } else {
+                return res.status(400).json({ error: 'Unsupported file type. Please upload a PDF.' });
+            }
+        }
+
+        if (!text || text.trim() === '') {
+            return res.status(400).json({ error: 'No text provided for analysis. Please paste text or upload a valid PDF.' });
         }
 
         if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'dummy_key') {

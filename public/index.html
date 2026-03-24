@@ -25,15 +25,30 @@
             <h2 data-i18n="introTitle">Ingreso de Texto Legislativo</h2>
             <p data-i18n="introDesc">Pega a continuación el texto de la ley, decreto o instrumento normativo que deseas evaluar. El sistema aplicará una metodología hermenéutica multinivel para detectar brechas de convencionalidad, omisiones estructurales y exclusiones.</p>
 
-            <form id="analyze-form">
+            <form id="analyze-form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="law-version" data-i18n="labelVersion">Versión / Fecha de última reforma (Opcional):</label>
-                    <input type="text" id="law-version" placeholder="Ej. Última reforma DOF 24-03-2023">
+                    <input type="text" id="law-version" name="version" placeholder="Ej. Última reforma DOF 24-03-2023">
                 </div>
-                <div class="form-group">
+
+                <div class="input-tabs">
+                    <button type="button" class="input-tab active" onclick="switchInputType('text')" data-i18n="tabPasteText">Pegar Texto</button>
+                    <button type="button" class="input-tab" onclick="switchInputType('file')" data-i18n="tabUploadPdf">Subir PDF</button>
+                </div>
+
+                <div id="input-text-container" class="form-group">
                     <label for="law-text" data-i18n="labelLawText">Texto normativo:</label>
-                    <textarea id="law-text" rows="10" required placeholder="Pega el articulado aquí..."></textarea>
+                    <textarea id="law-text" name="text" rows="10" placeholder="Pega el articulado aquí..."></textarea>
                 </div>
+
+                <div id="input-file-container" class="form-group" style="display: none;">
+                    <label for="law-pdf" data-i18n="labelLawPdf">Archivo PDF:</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="law-pdf" name="lawPdf" accept="application/pdf" class="file-input">
+                        <p class="file-hint" data-i18n="hintPdfUpload">Sube el documento oficial en formato PDF para mantener la referencia a los artículos originales.</p>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary" id="submit-btn" data-i18n="btnSubmit">Ejecutar Análisis</button>
             </form>
         </div>
