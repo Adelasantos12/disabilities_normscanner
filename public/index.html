@@ -11,9 +11,9 @@
 <body oncontextmenu="return false;">
     <header class="navbar">
         <div class="brand">By Easy - <span class="subtitle">Adela Santos, PhD</span></div>
-        <div class="nav-title" data-i18n="navTitle">Herramienta de Análisis Normativo Profundo</div>
+        <div class="nav-title" data-i18n="navTitle">Herramienta de análisis normativo profundo</div>
         <div class="nav-actions">
-            <button class="btn btn-secondary btn-sm" id="btn-methodology" data-i18n="btnMethodology">Nota Metodológica</button>
+            <button class="btn btn-secondary btn-sm" id="btn-methodology" data-i18n="btnMethodology">Nota metodológica</button>
             <select id="lang-selector" class="lang-selector">
                 <option value="es">ES</option>
                 <option value="en">EN</option>
@@ -23,17 +23,17 @@
 
     <main class="container">
         <div class="card intro-card">
-            <h2 data-i18n="introTitle">Ingreso de Texto Legislativo</h2>
+            <h2 data-i18n="introTitle">Ingreso de texto legislativo</h2>
             <p data-i18n="introDesc">Pega a continuación el texto de la ley, decreto o instrumento normativo que deseas evaluar. El sistema aplicará una metodología hermenéutica multinivel para detectar brechas de convencionalidad, omisiones estructurales y exclusiones.</p>
 
             <form id="analyze-form" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="law-version" data-i18n="labelVersion">Versión / Fecha de última reforma (Opcional):</label>
+                    <label for="law-version" data-i18n="labelVersion">Versión / Fecha de última reforma (opcional):</label>
                     <input type="text" id="law-version" name="version" placeholder="Ej. Última reforma DOF 24-03-2023">
                 </div>
 
                 <div class="input-tabs">
-                    <button type="button" class="input-tab active" onclick="switchInputType('text')" data-i18n="tabPasteText">Pegar Texto</button>
+                    <button type="button" class="input-tab active" onclick="switchInputType('text')" data-i18n="tabPasteText">Pegar texto</button>
                     <button type="button" class="input-tab" onclick="switchInputType('file')" data-i18n="tabUploadPdf">Subir PDF</button>
                 </div>
 
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" id="submit-btn" data-i18n="btnSubmit">Ejecutar Análisis</button>
+                <button type="submit" class="btn btn-primary" id="submit-btn" data-i18n="btnSubmit">Ejecutar análisis</button>
             </form>
         </div>
 
@@ -61,7 +61,7 @@
 
         <div id="results" class="results-container" style="display: none;">
             <div class="tabs">
-                <button class="tablink active" onclick="openTab(event, 'Visual')" data-i18n="tabVisual">Resumen Visual</button>
+                <button class="tablink active" onclick="openTab(event, 'Visual')" data-i18n="tabVisual">Resumen visual</button>
                 <button class="tablink" onclick="openTab(event, 'Estructura')" data-i18n="tabStructure">Estructura</button>
                 <button class="tablink" onclick="openTab(event, 'Exclusiones')" data-i18n="tabExclusions">Exclusiones</button>
                 <button class="tablink" onclick="openTab(event, 'Convencionalidad')" data-i18n="tabConventionality">Convencionalidad</button>
@@ -69,39 +69,39 @@
             </div>
 
             <div id="Visual" class="tabcontent" style="display: block;">
-                <h3 data-i18n="visualTitle">Visualización de Datos y Métricas de Riesgo</h3>
+                <h3 data-i18n="visualTitle">Visualización de datos y métricas de riesgo</h3>
                 <p data-i18n="visualDesc">Mapeo cuantitativo de los factores de riesgo de exclusión y compatibilidad normativa detectados.</p>
                 <div class="charts-grid">
                     <div class="chart-container">
-                        <h4 data-i18n="chartCompatTitle">Índice de Compatibilidad Convencional</h4>
+                        <h4 data-i18n="chartCompatTitle">Índice de compatibilidad convencional</h4>
                         <canvas id="chart-compatibilidad"></canvas>
                     </div>
                     <div class="chart-container">
-                        <h4 data-i18n="chartRisksTitle">Mapa de Riesgos Normativos</h4>
+                        <h4 data-i18n="chartRisksTitle">Mapa de riesgos normativos</h4>
                         <canvas id="chart-riesgos"></canvas>
                     </div>
                 </div>
             </div>
 
             <div id="Estructura" class="tabcontent">
-                <h3 data-i18n="structureTitle">Disección Estructural de la Ley</h3>
+                <h3 data-i18n="structureTitle">Disección estructural de la ley</h3>
 
                 <div class="section-block">
-                    <h4>Anatomía Formal</h4>
+                    <h4 data-i18n="structAnatomy">Anatomía formal</h4>
                     <p id="res-anatomia"></p>
                 </div>
 
                 <div class="section-block">
-                    <h4>Mapa de Actores Normativos</h4>
+                    <h4 data-i18n="structActors">Mapa de actores normativos</h4>
                     <div class="table-responsive">
                         <table class="data-table" id="table-actores">
                             <thead>
                                 <tr>
-                                    <th>Actor</th>
-                                    <th>Tipo</th>
-                                    <th>Obligaciones</th>
-                                    <th>Facultades</th>
-                                    <th>Exigibilidad</th>
+                                    <th data-i18n="thActor">Actor</th>
+                                    <th data-i18n="thType">Tipo</th>
+                                    <th data-i18n="thObligations">Obligaciones</th>
+                                    <th data-i18n="thPowers">Facultades</th>
+                                    <th data-i18n="thEnforceability">Exigibilidad</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -111,18 +111,18 @@
 
                 <div class="grid-2">
                     <div class="section-block">
-                        <h4>Flujo de Responsabilidad</h4>
+                        <h4 data-i18n="structFlow">Flujo de responsabilidad</h4>
                         <p id="res-flujo"></p>
                     </div>
                     <div class="section-block">
-                        <h4>Mecanismos de Exigibilidad</h4>
+                        <h4 data-i18n="structMechanisms">Mecanismos de exigibilidad</h4>
                         <p id="res-exigibilidad"></p>
                     </div>
                 </div>
             </div>
 
             <div id="Exclusiones" class="tabcontent">
-                <h3>Análisis de Omisiones y Exclusiones Implícitas</h3>
+                <h3 data-i18n="exclusionsTitle">Análisis de omisiones y exclusiones implícitas</h3>
 
                 <div class="accordion" id="acc-exclusiones">
                     <!-- Se llenará dinámicamente -->
@@ -130,24 +130,24 @@
             </div>
 
             <div id="Convencionalidad" class="tabcontent">
-                <h3>Análisis de Convencionalidad</h3>
+                <h3 data-i18n="convTitle">Análisis de convencionalidad</h3>
 
                 <div class="section-block">
-                    <h4>Bloque de Convencionalidad</h4>
+                    <h4 data-i18n="convBlock">Bloque de convencionalidad</h4>
                     <p id="res-bloque"></p>
                 </div>
 
                 <div class="section-block">
-                    <h4>Tabla de Brechas</h4>
+                    <h4 data-i18n="convGaps">Tabla de brechas</h4>
                     <div class="table-responsive">
                         <table class="data-table" id="table-brechas">
                             <thead>
                                 <tr>
-                                    <th>Estándar Internacional</th>
-                                    <th>Disposición Ley</th>
-                                    <th>Tipo de Brecha</th>
-                                    <th>Gravedad</th>
-                                    <th>Argumentación</th>
+                                    <th data-i18n="thStandard">Estándar internacional</th>
+                                    <th data-i18n="thProvision">Disposición ley</th>
+                                    <th data-i18n="thGapType">Tipo de brecha</th>
+                                    <th data-i18n="thSeverity">Gravedad</th>
+                                    <th data-i18n="thArgument">Argumentación</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -157,8 +157,8 @@
             </div>
 
             <div id="Argumentacion" class="tabcontent">
-                <h3>Construcción de Argumentación Teórica</h3>
-                <p>Propuestas de argumentación estructuradas para litigio o cabildeo.</p>
+                <h3 data-i18n="argTitle">Construcción de argumentación teórica</h3>
+                <p data-i18n="argDesc">Propuestas de argumentación estructuradas para litigio o cabildeo.</p>
 
                 <div id="list-argumentos" class="argument-list">
                     <!-- Se llenará dinámicamente -->
@@ -166,7 +166,7 @@
             </div>
 
             <div class="conclusion-block">
-                <h4>Síntesis del Análisis</h4>
+                <h4 data-i18n="synthesisTitle">Síntesis del análisis</h4>
                 <p id="res-conclusion"></p>
             </div>
 
@@ -184,7 +184,7 @@
                 <p data-i18n="ctaDesc">El código fuente de esta herramienta es de acceso abierto bajo solicitud justificada. Si representa a un Think Tank, institución académica u organismo público y requiere un diagnóstico exhaustivo de política pública, póngase en contacto.</p>
             </div>
             <div class="footer-contact">
-                <a href="mailto:adela.santos@graduateinstitute.ch" class="btn btn-secondary" data-i18n="ctaButton">Solicitar Análisis Completo</a>
+                <a href="mailto:adela.santos@graduateinstitute.ch" class="btn btn-secondary" data-i18n="ctaButton">Solicitar análisis completo</a>
                 <p class="email-text">adela.santos@graduateinstitute.ch</p>
             </div>
         </div>
@@ -194,18 +194,18 @@
     <div id="methodologyModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
-            <h2 data-i18n="modalTitle">Nota Metodológica</h2>
+            <h2 data-i18n="modalTitle">Nota metodológica</h2>
 
             <div class="modal-body">
-                <h3 data-i18n="modalSection1Title">Niveles de Análisis</h3>
+                <h3 data-i18n="modalSection1Title">Niveles de análisis</h3>
                 <p data-i18n="modalSection1Desc">Este escáner trasciende la búsqueda de palabras clave. Evalúa el efecto jurídico real de la norma aplicando una metodología hermenéutica multinivel, la cual no es un simple análisis de coincidencias textuales, sino que contempla omisiones, exclusiones estructurales y sesgos implícitos.</p>
 
-                <h3 data-i18n="modalSection2Title">Elementos del Marco Jurídico</h3>
+                <h3 data-i18n="modalSection2Title">Elementos del marco jurídico</h3>
                 <p data-i18n="modalSection2Desc">Analizamos anatomía formal, mapa de actores (obligaciones, facultades, exigibilidad), exclusiones explícitas o implícitas (interseccionalidad, perspectiva de género, pueblos indígenas) y el control de convencionalidad basado en la progresividad, no regresividad y máxima protección.</p>
 
-                <h3 data-i18n="modalSection3Title">Supuestos Teóricos</h3>
+                <h3 data-i18n="modalSection3Title">Supuestos teóricos</h3>
                 <ul data-i18n="modalSection3List">
-                    <li><strong>Compliance e Internalización:</strong> Evaluación de cómo los Estados adaptan y aplican los estándares internacionales en la normativa local.</li>
+                    <li><strong>Compliance e internalización:</strong> Evaluación de cómo los Estados adaptan y aplican los estándares internacionales en la normativa local.</li>
                     <li><strong>Relevancia:</strong> La omisión o silencio normativo es considerado un dato analítico tan importante como el texto mismo.</li>
                 </ul>
 

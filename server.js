@@ -5,20 +5,70 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const pdfParse = require('pdf-parse');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const { OpenAI } = require('openai');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configurar multer para almacenar el archivo en memoria (no escribirlo a disco permanentemente)
+// Configuración de Seguridad: Helmet para cabeceras HTTP
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
+            styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
+            fontSrc: ["'self'", "https://fonts.gstatic.com"],
+            imgSrc: ["'self'", "data:"]
+        }
+    }
+}));
+
+// Configuración de Seguridad: Limitador de peticiones (15 reqs por IP cada 15 min para la API)
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 15,
+    message: { error: 'Demasiadas peticiones desde esta IP, por favor intente de nuevo en 15 minutos.' },
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+// Configurar multer para almacenar el archivo en memoria
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage, limits: { fileSize: 10 * 1024 * 1024 } }); // Límite de 10 MB para PDF
+const upload = multer({ storage: storage, limits: { fileSize: 10 * 1024 * 1024 } }); // Límite de 10 MB
 
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.static('public'));
+
+// Endpoint de Health Test
+app.get('/api/health', (req, res) => {
+    res.status(200).json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        service: 'normative-scanner-backend'
+    });
+});
+
+// Endpoint de Health Security Test
+app.get('/api/health/security', (req, res) => {
+    res.status(200).json({
+        status: 'SECURE',
+        timestamp: new Date().toISOString(),
+        protections: {
+            helmet_headers: true,
+            rate_limiting: true,
+            max_payload_size: '50mb',
+            cors_enabled: true,
+            file_upload_limit: '10mb',
+            memory_storage_only: true
+        }
+    });
+});
 
 // Configure OpenAI API
 const openai = new OpenAI({
@@ -155,10 +205,11 @@ Debes responder SIEMPRE con un objeto JSON válido, para que la interfaz web pue
 Asegúrate de escapar las comillas dobles internas y devolver un JSON estricto. Analiza el texto proporcionado a continuación.
 `;
 
-app.post('/api/analyze', upload.single('lawPdf'), async (req, res) => {
+app.post('/api/analyze', apiLimiter, upload.single('lawPdf'), async (req, res) => {
     try {
         let text = req.body.text || "";
         const version = req.body.version || "";
+        const targetLanguage = req.body.language || "es";
 
         // Si el usuario subió un archivo, lo priorizamos
         if (req.file) {
@@ -217,12 +268,17 @@ app.post('/api/analyze', upload.single('lawPdf'), async (req, res) => {
             return res.status(500).json({ error: 'OpenAI API key is not configured on the server.' });
         }
 
+        let dynamicSystemPrompt = SYSTEM_PROMPT;
+        if (targetLanguage === 'en') {
+            dynamicSystemPrompt += `\n\nTRANSLATION INSTRUCTION: The user interface is currently in English. You MUST translate all the generated content (the values of the JSON keys) into British English (e.g. 'analyse', 'programme', 'summarise'). However, DO NOT translate or modify the JSON keys themselves, keep them exactly as requested in Spanish so the frontend can parse them properly.`;
+        }
+
         const userPrompt = `Versión/Contexto indicado por el usuario: ${version || 'No especificado'}\n\nTexto normativo a analizar:\n${text}`;
 
         const response = await openai.chat.completions.create({
             model: "gpt-4o-mini", // Cost-effective model for large texts
             messages: [
-                { role: "system", content: SYSTEM_PROMPT },
+                { role: "system", content: dynamicSystemPrompt },
                 { role: "user", content: userPrompt }
             ],
             response_format: { type: "json_object" },
