@@ -1,121 +1,83 @@
-# Marco de Análisis Estructural de Leyes
+# Structural Analysis Framework
+## Structural Review of Domestic Legal Instruments
 
-## 1. Técnica legislativa: elementos formales
+This framework sets out the structural method used by NormTrace to analyse the formal design, institutional architecture, and enforceability pathways of a domestic legal instrument.
 
-### Tipos de instrumentos normativos (México)
-| Tipo | Jerarquía | Órgano emisor | Procedimiento |
-|------|-----------|---------------|---------------|
-| Constitución / reforma constitucional | Suprema | Congreso + mayoría estados | Art. 135 CPEUM |
-| Ley Constitucional | Constitucional | Congreso | Art. 73 CPEUM |
-| Ley General | Supraestatal | Congreso Federal | Distribución competencias federales-estatales |
-| Ley Federal | Federal | Congreso Federal | Solo ámbito federal |
-| Ley Orgánica | Federal/Estatal | Congreso | Organización de poderes |
-| Reglamento | Subordinada | Ejecutivo | Art. 89 fracc. I CPEUM |
-| NOM (Norma Oficial Mexicana) | Técnica | Secretarías | LFMN |
-| Decreto | Variable | Ejecutivo / Congreso | Según materia |
+Its purpose is not merely to describe the internal organisation of a statute or regulation, but to assess whether the domestic legal instrument creates a coherent, enforceable, and rights-compatible institutional structure.
 
-### Distinción clave: Ley General vs Ley Federal
-La **Ley General** distribuye competencias entre federación, estados y municipios; los tres órdenes de gobierno están obligados y pueden legislar concurrentemente.
-La **Ley Federal** solo obliga a autoridades del orden federal.
-
-**Para discapacidad**: La LGIPD (Ley General para la Inclusión de Personas con Discapacidad) es una Ley General — esto significa que los congresos estatales deben legislar en armonía con ella, y los municipios tienen obligaciones directas.
+For the purposes of NormTrace, structural analysis is a core component of broader **normative alignment** and **legal compatibility** review. A domestic legal instrument may use rights-based language yet remain structurally weak if it allocates responsibilities poorly, omits institutional mechanisms, or fails to create enforceable obligations.
 
 ---
 
-## 2. Anatomía interna de una ley mexicana
+## 1. Legislative drafting: formal elements
 
-Estructura típica de ley general:
-```
-TÍTULO PRELIMINAR / DISPOSICIONES GENERALES
-  ├── Objeto de la ley
-  ├── Ámbito de aplicación (personal / material / territorial / temporal)
-  ├── Definiciones
-  └── Principios rectores
+Domestic legal instruments must always be analysed in relation to the legal order in which they operate. Structural analysis therefore begins by identifying the type of instrument, its place in the normative hierarchy, its issuing authority, and its territorial and institutional scope.
 
-TÍTULO I-N: DERECHOS / MATERIAS
-  ├── Capítulos por área (salud, educación, trabajo, etc.)
-  └── Cada capítulo: definición del derecho + obligaciones de las autoridades
+### Illustrative comparison: Mexico and Switzerland
 
-TÍTULO [PENÚLTIMO]: ESTRUCTURA INSTITUCIONAL
-  ├── Órganos creados / designados
-  ├── Atribuciones
-  └── Coordinación interinstitucional
+| Dimension | Mexico | Switzerland |
+|---|---|---|
+| Basic state structure | Federal state with federation, states, and municipalities | Federal state with Confederation, cantons, and communes |
+| Key legislative levels | Constitution, general laws, federal laws, state laws, regulations, technical norms | Federal Constitution, federal acts, ordinances, cantonal constitutions, cantonal laws, cantonal ordinances, communal rules where relevant |
+| Importance of competence allocation | Very high, especially for general laws distributing powers across levels of government | Very high, especially because cantons retain substantial powers unless competence is assigned to the Confederation |
+| Typical structural question | Is the instrument federal, general, state-level, regulatory, or administrative? | Is the instrument federal, cantonal, intercantonal, regulatory, or administrative? |
+| Relevance for rights analysis | Competence distribution affects implementation and enforceability | Federal–cantonal distribution affects implementation, judicial pathways, and administrative reach |
 
-TÍTULO ÚLTIMO: SANCIONES Y RESPONSABILIDADES
-  └── Tipos de infracción + consecuencias
+### Country-specific legal forms
 
-TRANSITORIOS
-  └── Vigencia, derogaciones, plazos de implementación
-```
+The precise hierarchy and categories of domestic legal instruments should always be read together with the relevant country module.
 
----
+For the current repository, analysts should consult:
 
-## 3. Mapeo de actores normativos: metodología
+- `references/countries/mexico/legal-system.md`
+- `references/countries/switzerland/legal-system.md`
 
-### Paso A: Identificar verbos de obligación
-Buscar sistemáticamente los siguientes verbos y sus sujetos:
-- **Obligación positiva**: deberá, garantizará, promoverá, establecerá, implementará, proporcionará
-- **Obligación de abstención**: se abstendrá, queda prohibido, no podrá
-- **Facultad discrecional**: podrá, puede, está facultado (⚠️ peligro: las facultades discrecionales no son exigibles)
-- **Objetivo aspiracional**: procurará, buscará, fomentará (⚠️ peligro: lenguaje soft law sin exigibilidad)
+### Relevance for NormTrace
 
-### Paso B: Clasificar por tipo de obligación (trilogía DDHH)
-- **Respetar**: No interferir con el ejercicio del derecho
-- **Proteger**: Evitar que terceros interfieran
-- **Garantizar / Cumplir**: Adoptar medidas positivas para la realización del derecho
+The legal effect of a domestic legal instrument cannot be assessed correctly without identifying:
 
-### Paso C: Verificar la cadena de exigibilidad
-Para cada obligación, trazar:
-```
-Titular del derecho → Demanda/denuncia → Autoridad receptora → Mecanismo de respuesta → Sanción por incumplimiento
-```
-Si algún eslabón está roto, la obligación es declarativa.
+- the level of government that enacted it;
+- the competences it allocates or presupposes;
+- the authorities it binds;
+- and the territorial scale at which implementation is expected to occur.
+
+In federal systems, these questions are central rather than secondary.
 
 ---
 
-## 4. Análisis de la estructura institucional
+## 2. Internal anatomy of a domestic legal instrument
 
-### Preguntas diagnósticas:
-1. ¿Se crea algún órgano nuevo o se asigna la función a uno existente?
-2. ¿Tiene presupuesto propio o depende de reasignaciones?
-3. ¿Tiene autonomía técnica o está subordinado a una secretaría?
-4. ¿Puede emitir resoluciones vinculantes?
-5. ¿Existe un mecanismo de coordinación intersectorial con poder real (no solo "mesas de trabajo")?
-6. ¿Hay participación de la sociedad civil y de las personas titulares de derechos en la estructura?
+The internal anatomy of a domestic legal instrument varies across jurisdictions, but certain recurring components are analytically important across systems.
 
-### Señales de alerta institucional:
-- **Concentración en una sola secretaría**: si todo depende de SALUD, o de DIF, la ley reproduce el modelo médico-asistencial
-- **Órgano colegiado sin quórum ni periodicidad obligatoria**: puede volverse inoperante
-- **Falta de secretariado técnico**: los órganos sin estructura administrativa no funcionan
-- **Ausencia de presupuesto etiquetado**: las obligaciones sin presupuesto son aspiraciones
-- **Transitorios sin plazo**: "se instalará en el plazo que determine el Reglamento" = indefinido
+A typical rights-relevant domestic legal instrument often includes some combination of the following:
 
----
+```text
+GENERAL OR PRELIMINARY PROVISIONS
+  ├── Purpose or object
+  ├── Scope of application
+  ├── Definitions
+  └── Guiding principles
 
-## 5. Modelo médico vs modelo social de la discapacidad (aplicable como marco transversal)
+SUBSTANTIVE PART
+  ├── Rights, duties, or policy areas
+  ├── Institutional responsibilities
+  ├── Procedural rules
+  └── Access, implementation, or coordination clauses
 
-Este marco, central para la CDPD, aplica analógicamente a cualquier ley que regule grupos vulnerabilizados:
+INSTITUTIONAL OR ADMINISTRATIVE PART
+  ├── Bodies created or designated
+  ├── Powers and functions
+  ├── Coordination mechanisms
+  └── Monitoring or reporting duties
 
-| Dimensión | Modelo médico/asistencial | Modelo social de derechos |
-|-----------|--------------------------|---------------------------|
-| Problema identificado | El individuo / su condición | Las barreras del entorno |
-| Sujeto de la norma | "Beneficiario", "paciente" | Titular de derechos |
-| Respuesta del Estado | Asistencia, rehabilitación | Ajustes razonables, accesibilidad universal |
-| Participación | Objeto de políticas | Agente en el diseño de políticas |
-| Estándar | Igualdad formal | Igualdad sustantiva |
-| Lenguaje típico | "minusválido", "incapaz", "necesidades especiales" | "persona con discapacidad", "ajustes razonables" |
-| Meta | Normalización / integración | Inclusión / vida independiente |
+ENFORCEMENT PART
+  ├── Remedies
+  ├── Sanctions
+  ├── Liability provisions
+  └── Complaint or review pathways
 
----
-
-## 6. Análisis del ámbito de aplicación
-
-### Dimensiones del ámbito:
-1. **Personal**: ¿A quiénes aplica? ¿Hay umbrales que excluyen? (ej. solo discapacidad "permanente")
-2. **Material**: ¿Qué materias cubre? ¿Hay omisiones sectoriales?
-3. **Territorial**: ¿Federal, estatal, municipal? ¿Comunidades rurales e indígenas?
-4. **Temporal**: ¿Derechos adquiridos? ¿Cláusulas de progresividad con plazos?
-5. **Subjetivo pasivo**: ¿Solo autoridades o también particulares? ¿Empleadores privados?
-
-### Trampa del ámbito subjetivo pasivo:
-Una ley que solo obliga al Estado deja sin regulación las violaciones de DDHH cometidas por privados (empresas, familias, instituciones educativas privadas). Para grupos como personas con discapacidad, mujeres, personas indígenas, la violencia y discriminación privada es frecuentemente el problema central.
+FINAL OR TRANSITIONAL PROVISIONS
+  ├── Entry into force
+  ├── Repeals or amendments
+  ├── Transitional duties
+  └── Implementation deadlines
