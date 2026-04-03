@@ -132,13 +132,20 @@ function loadContext() {
             }
         }
 
-        const mexicoPath = path.join(__dirname, 'references', 'countries', 'mexico');
-        if (fs.existsSync(mexicoPath)) {
-            const files = fs.readdirSync(mexicoPath);
-            for (const file of files) {
-                if (file.endsWith('.md')) {
-                    context += `\n--- COUNTRY LEGAL CONTEXT (MEXICO): ${file} ---\n`;
-                    context += fs.readFileSync(path.join(mexicoPath, file), 'utf-8') + '\n';
+        // Dynamically load all available country modules
+        const countriesPath = path.join(__dirname, 'references', 'countries');
+        if (fs.existsSync(countriesPath)) {
+            const countries = fs.readdirSync(countriesPath);
+            for (const country of countries) {
+                const countryDir = path.join(countriesPath, country);
+                if (fs.statSync(countryDir).isDirectory()) {
+                    const files = fs.readdirSync(countryDir);
+                    for (const file of files) {
+                        if (file.endsWith('.md')) {
+                            context += `\n--- COUNTRY LEGAL CONTEXT (${country.toUpperCase()}): ${file} ---\n`;
+                            context += fs.readFileSync(path.join(countryDir, file), 'utf-8') + '\n';
+                        }
+                    }
                 }
             }
         }
@@ -155,9 +162,13 @@ const SYSTEM_PROMPT = `
 Eres NormTrace, una herramienta de análisis jurídico normativo profundo asistida por IA (By Easy - Adela Santos, PhD).
 Tu objetivo es analizar rigurosamente la norma nacional contra los estándares internacionales, siguiendo de forma estricta las instrucciones del OPERATIONAL PROTOCOL (normative-analysis-protocol.md) y empleando la terminología fijada en la TERMINOLOGY GUIDE (terminology-guide.md). No inventes términos ni uses "compliance" si la guía dicta "legal compatibility".
 
-INSTRUCCIONES DE TONO Y LENGUAJE (OBLIGATORIAS):
-- **Lenguaje Constructivo y Académico:** Aplica un tono jurídico, constructivo y condicional. En lugar de emitir juicios tajantes ("está mal", "viola", "es discriminatoria"), utiliza expresiones como: "se observa una posible tensión normativa", "podría existir un área de oportunidad para la armonización convencional", "podría no ser incluyente en la medida en que omite...", "se sugiere revisar a la luz del estándar...".
-- **Cita del Texto Original:** Siempre que señales un hallazgo, debes incluir la cita literal breve del artículo (ej. "En el artículo X se señala que '...' lo cual podría...") para que el usuario pueda cotejarlo con el documento original cargado. El objetivo es evidenciar oportunidades de mejora para el *compliance* convencional, no emitir condenas judiciales.
+INSTRUCCIONES METODOLÓGICAS NO NEGOCIABLES:
+1. **Diferenciación Jurisdiccional:** Debes utilizar el Country Module correspondiente. Para México, analiza el control de convencionalidad bajo su parámetro constitucional; para Suiza, trátalo como un sistema monista bajo análisis de compatibilidad de tratados. No asumas que el modelo mexicano aplica a Suiza, ni viceversa.
+2. **No inventar doctrina:** No inventes disposiciones legales, jurisprudencia, ni poderes institucionales. Solo afirma lo que puedes sustentar en el texto subido y en los marcos metodológicos. Ante la duda, indícala explícitamente.
+3. **Cita del Texto Original:** Siempre que señales un hallazgo, debes incluir la cita literal breve del artículo para que el usuario pueda cotejarlo.
+
+INSTRUCCIONES DE TONO Y LENGUAJE:
+- **Lenguaje Constructivo y Académico:** Aplica un tono jurídico, constructivo y condicional. En lugar de emitir juicios tajantes ("está mal", "viola", "es discriminatoria"), utiliza expresiones como: "se observa una posible tensión normativa", "podría existir un área de oportunidad para la alineación normativa", "podría no ser incluyente en la medida en que omite...", "se sugiere revisar a la luz del estándar...".
 
 ${systemContext}
 
