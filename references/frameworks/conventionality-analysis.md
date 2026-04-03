@@ -1,149 +1,255 @@
-# Marco de Análisis de Convencionalidad
+# Conventionality and International Compatibility Analysis Framework
 
-## 1. Qué es el control de convencionalidad
+## 1. Purpose of this framework
 
-El control de convencionalidad es la obligación de todos los órganos del Estado (incluido el legislativo) de verificar que sus actos y normas sean compatibles con los tratados internacionales de derechos humanos y con la jurisprudencia de los órganos de supervisión.
+This framework sets out the method used by NormTrace to assess whether a **domestic legal framework** or **domestic legal instrument** is aligned with the relevant **international standard**.
 
-**Fuente**: Corte IDH, Caso Almonacid Arellano vs. Chile (2006), párr. 124; desarrollado en Trabajadores Cesados del Congreso vs. Perú (2006) y Cabrera García vs. México (2010, con voto del juez Ferrer Mac-Gregor que sistematiza la doctrina).
+In Latin American and Inter-American contexts, this type of review is often framed as **conventionality control**. In other jurisdictions, including Switzerland, the functionally equivalent inquiry may be better described as **international human rights compatibility analysis** or **treaty-compatibility analysis**.
 
-**En México**: El art. 1° constitucional (reforma junio 2011) constitucionaliza el principio: "Las normas relativas a los derechos humanos se interpretarán de conformidad con esta Constitución y con los tratados internacionales de la materia, favoreciendo en todo tiempo a las personas la protección más amplia." Esto crea el **bloque de constitucionalidad**.
+For the purposes of NormTrace, the core question is the same:
 
----
+**Does the domestic legal framework give adequate legal effect to the relevant international human rights standard?**
 
-## 2. El bloque de constitucionalidad en México
+This framework should therefore be used comparatively, while remaining attentive to country-specific rules on:
 
-El bloque incluye:
-1. Constitución Política de los Estados Unidos Mexicanos (CPEUM)
-2. Tratados internacionales en materia de DDHH ratificados por el Senado (art. 133 + art. 1° CPEUM)
-3. Jurisprudencia de la Corte Interamericana de Derechos Humanos (vinculante cuando México es parte; orientadora en demás casos)
-4. Observaciones Generales de los Comités de Naciones Unidas (interpretación autorizada de los tratados)
-5. Sentencias de la SCJN en materia de DDHH
-
-**Jerarquía interna post-reforma 2011 (SCJN, Contradicción de Tesis 293/2011)**:
-- Cuando no hay restricción expresa en la CPEUM: tratados internacionales y Constitución al mismo nivel, prevalece el más favorable (pro persona)
-- Cuando la CPEUM tiene restricción expresa: prevalece la Constitución (controversia doctrinal activa)
+- incorporation of international law,
+- direct applicability,
+- constitutional review,
+- judicial enforceability,
+- and the hierarchy or primacy of international obligations in domestic law.
 
 ---
 
-## 3. Tratados relevantes para análisis de discapacidad (México)
+## 2. General concept
 
-| Instrumento | Ratificación México | Órgano de monitoreo | Mecanismo de denuncia individual |
-|-------------|--------------------|--------------------|--------------------------------|
-| CDPD (Convención sobre Derechos de Personas con Discapacidad) | 17/12/2007 | Comité sobre los Derechos de las Personas con Discapacidad | Protocolo Facultativo (ratificado) |
-| Protocolo Facultativo CDPD | 17/12/2007 | Mismo comité | Comunicaciones individuales y colectivas |
-| PIDCP (Pacto Internacional de Derechos Civiles y Políticos) | 1981 | Comité de Derechos Humanos | Protocolo Facultativo I (ratificado) |
-| PIDESC (Pacto Internacional de Derechos Económicos, Sociales y Culturales) | 1981 | Comité DESC | Protocolo Facultativo (ratificado 2021) |
-| CEDAW | 1981 | Comité CEDAW | Protocolo Facultativo (ratificado) |
-| CDN (Convención sobre Derechos del Niño) | 1990 | Comité de los Derechos del Niño | Protocolos Facultativos |
-| Convenio 169 OIT | 1990 | OIT / Mecanismo de expertos ONU | Reclamaciones ante OIT |
-| CADH (Convención Americana) | 1981 | CIDH + Corte IDH | Peticiones individuales ante CIDH |
-| Protocolo de San Salvador | 1996 | CIDH | Sistema de informes |
-| Convención Interamericana Discapacidad (CIADDIS) | 2000 | CEDDIS | Sistema de informes |
+### 2.1 Conventionality control in a broad sense
 
----
+Conventionality control refers, in broad methodological terms, to the duty of state authorities to ensure that domestic legal instruments, acts, and practices are compatible with applicable international human rights obligations and with the relevant interpretive standards developed by competent supervisory bodies.
 
-## 4. Metodología de contraste convencional (5 pasos)
+### 2.2 Inter-American doctrinal origin
 
-### Paso 1: Identificar el derecho en el instrumento internacional
-- Localizar artículos específicos del tratado aplicable
-- Leer las Observaciones Generales del comité sobre ese artículo
-- Verificar si hay jurisprudencia de la Corte IDH o SCJN sobre el estándar
+Within the Inter-American system, the doctrine was articulated by the Inter-American Court of Human Rights in *Almonacid Arellano et al. v. Chile* (2006, para. 124) and further developed in cases such as *Dismissed Congressional Employees (Aguado Alfaro et al.) v. Peru* (2006) and *Cabrera García and Montiel Flores v. Mexico* (2010).
 
-### Paso 2: Determinar el contenido mínimo del derecho
-Todo derecho tiene un "contenido mínimo esencial" no derogable. Preguntar:
-- ¿Qué garantía básica debe existir para que el derecho sea real?
-- ¿Qué prohíbe absolutamente el instrumento (obligación de respeto)?
-- ¿Qué debe hacer activamente el Estado (obligación de garantía)?
+### 2.3 NormTrace usage rule
 
-### Paso 3: Identificar la disposición nacional correspondiente
-- ¿Existe? ¿En qué artículo?
-- Si no existe: omisión legislativa
-- Si existe: ¿cómo está redactada? ¿Qué efecto jurídico produce realmente?
+For NormTrace, **conventionality analysis** should be understood as the structured assessment of whether a domestic legal instrument is compatible with the relevant international standard in terms of:
 
-### Paso 4: Analizar la brecha
-Tipo de brecha (ver tabla en SKILL.md paso 3.3) y su alcance:
-- ¿Es parcial o total?
-- ¿Afecta a todos los titulares o solo a subgrupos?
-- ¿Es subsanable por vía reglamentaria o requiere reforma legal?
+- legal effect,
+- institutional design,
+- enforceability,
+- rights-holder access,
+- and implementation-oriented consequences.
 
-### Paso 5: Identificar la consecuencia jurídica
-- ¿La brecha constituye responsabilidad internacional del Estado?
-- ¿Es impugnable ante la SCJN (amparo por inconvencionalidad)?
-- ¿Es denunciable ante un Comité de la ONU?
-- ¿Hay precedente comparable en otra jurisdicción?
+This does **not** mean simple textual comparison.
 
 ---
 
-## 5. Observaciones Generales clave por instrumento
+## 3. Country-specific configurations of rights review
 
-### Comité CDPD — Observaciones Generales relevantes:
-- **OG N°1 (2014)**: Igual reconocimiento como persona ante la ley (art. 12) — rechaza la sustitución en la toma de decisiones; exige apoyo para la toma de decisiones
-- **OG N°2 (2014)**: Accesibilidad (art. 9) — obligación inmediata, no progresiva; aplica a entidades privadas
-- **OG N°3 (2016)**: Mujeres y niñas con discapacidad (arts. 6 y 7) — interseccionalidad género-discapacidad
-- **OG N°4 (2016)**: Derecho a la educación inclusiva (art. 24) — rechaza educación especial segregada
-- **OG N°5 (2017)**: Vida independiente e inclusión en la comunidad (art. 19)
-- **OG N°6 (2018)**: Igualdad y no discriminación (art. 5) — discriminación múltiple e interseccional
-- **OG N°7 (2018)**: Participación de personas con discapacidad (incluye sociedad civil y organizaciones lideradas por PcD)
-- **OG N°8 (2022)**: Derecho al trabajo y al empleo (art. 27)
+The method remains comparable across jurisdictions, but the domestic legal route through which international standards operate is not identical.
 
-### Observaciones Finales sobre México:
-- Comité CDPD, Observaciones finales sobre el informe inicial de México (2014) — CRPD/C/MEX/CO/1
-- Comité CEDAW, Observaciones finales a México (2018) — CEDAW/C/MEX/CO/9
-- Comité DESC, Observaciones finales a México (2018) — E/C.12/MEX/CO/5-6
+### 3.1 Mexico
+
+For Mexico, conventionality analysis should be situated within the **constitutional parameter of rights review** shaped by:
+
+1. the **Political Constitution of the United Mexican States (CPEUM)**;
+2. applicable **international human rights treaties** ratified by Mexico;
+3. relevant jurisprudence of the **Inter-American Court of Human Rights**;
+4. interpretive materials such as **General Comments** issued by UN treaty bodies;
+5. relevant decisions of the **Supreme Court of Justice of the Nation (SCJN)**.
+
+#### Operational note for Mexico
+
+Following the 2011 constitutional reform and the interpretive framework commonly associated with *Contradicción de Tesis 293/2011*:
+
+- where there is no express constitutional restriction, constitutional and treaty-based human rights standards are read together within the constitutional parameter, with preference given to the most protective interpretation;
+- where the Constitution contains an express restriction, that restriction prevails within the domestic legal order.
+
+For the Mexican context, the language of **conventionality control** is fully appropriate.
+
+### 3.2 Switzerland
+
+For Switzerland, the same analytical function should be framed somewhat differently.
+
+Switzerland follows a **monist** approach, meaning that international law becomes part of domestic law without requiring a separate act of transformation. However, not all treaty provisions are directly applicable. Direct applicability depends on whether the norm is sufficiently precise, justiciable, and addressed to authorities capable of applying it. 
+
+International law generally takes precedence over domestic law in Switzerland, but that primacy is not absolute. Swiss doctrine and case law recognise exceptions, including the **Schubert** line of reasoning in some conflicts involving federal statutes, alongside stronger protection for international human rights guarantees such as those under the ECHR. 
+
+Switzerland is a party to the **CRPD**, but has **not ratified the Optional Protocol**, which affects the availability of individual communications under that instrument. 
+
+#### Operational note for Switzerland
+
+For the Swiss context, the analysis should therefore ask:
+
+- whether the relevant treaty rule forms part of Swiss domestic law;
+- whether it is directly applicable;
+- how it relates to conflicting domestic legislation;
+- whether the issue is judicially justiciable;
+- and whether any international individual complaint pathway exists for that instrument.
+
+For Switzerland, the phrase **international human rights compatibility analysis** may often be more precise than the narrower Inter-American expression **conventionality control**, although the latter may still be used comparatively if properly qualified.
 
 ---
 
-## 6. Jurisprudencia SCJN relevante (materia discapacidad y DDHH)
+## 4. International legal instruments relevant to disability-rights analysis
 
-### Tesis y criterios fundamentales:
-- **Contradicción de Tesis 293/2011** (Pleno): establece el parámetro de regularidad constitucional, bloque de derechos humanos
-- **Amparo en Revisión 410/2012**: discapacidad y modelo social, rechaza restricciones a capacidad jurídica
-- **Amparo Directo en Revisión 1387/2012**: personas con discapacidad psicosocial y tutela; contrario al art. 12 CDPD
-- **Acción de Inconstitucionalidad 96/2014**: igualdad y no discriminación como base interpretativa
-- **Protocolo de Actuación para quienes imparten justicia en casos que involucren personas con discapacidad** (SCJN, 2014): no es jurisprudencia pero es guía de aplicación
+The relevant instruments vary by jurisdiction. For repository design purposes, ratification status and complaint mechanisms should be located primarily in country modules and instrument files rather than hard-coded here.
 
-### Criterios de la Corte IDH aplicables:
-- **Ximenes Lopes vs. Brasil (2006)**: discapacidad psicosocial y estándares de atención
-- **Furlan vs. Argentina (2012)**: acceso a la justicia para personas con discapacidad; primer caso con análisis CDPD
-- **Artavia Murillo vs. Costa Rica (2012)**: autonomía personal y proyecto de vida
-- **Caso Gonzales Lluy vs. Ecuador (2015)**: discriminación interseccional (VIH + pobreza + género + educación)
+### Minimum rule for analysts
+
+Before proceeding, verify for the jurisdiction under review:
+
+- whether the state is party to the international legal instrument;
+- whether any optional protocol has been ratified;
+- whether an individual communications mechanism is available;
+- and whether regional human rights mechanisms are relevant.
+
+For the current pilot and v2 comparison, the most relevant instrument remains:
+
+- **CRPD (Convention on the Rights of Persons with Disabilities)**
+
+Additional instruments may include, depending on jurisdiction and issue:
+
+- ICCPR
+- ICESCR
+- CEDAW
+- CRC
+- ILO Convention No. 169
+- ACHR and related Inter-American instruments (Mexico)
+- ECHR and related European human rights instruments (Switzerland, where relevant)
 
 ---
 
-## 7. Plantilla de argumento de inconvencionalidad
+## 5. Method for conventionality and international compatibility analysis
 
-Para construir argumentos sólidos para litigio o cabildeo:
+NormTrace applies a five-step method.
 
-```
-ARGUMENTO DE INCONVENCIONALIDAD [NÚMERO]
+### Step 1. Identify the right in the relevant international legal instrument
 
-1. NORMA IMPUGNADA / ANALIZADA:
-   [Artículo X de la Ley Y]
+- Locate the relevant treaty provision or provisions.
+- Review any General Comments, concluding observations, or other interpretive materials relevant to that right.
+- Verify whether there is relevant case law from the competent regional or domestic court.
 
-2. DERECHO VULNERADO:
-   [Nombre del derecho + artículo del instrumento internacional]
+### Step 2. Determine the minimum content of the right
 
-3. CONTENIDO DEL ESTÁNDAR INTERNACIONAL:
-   [Paráfrasis del artículo + cita de Observación General o jurisprudencia]
-   Fuente: [instrumento, número de OG, párrafo específico]
+Each right has a minimum or essential content that cannot be emptied without undermining the right itself.
 
-4. FORMA EN QUE LA NORMA NACIONAL INCUMPLE:
-   □ Ausencia total del derecho
-   □ Reconocimiento sin garantía
-   □ Regresión respecto a estándar anterior
-   □ Incompatibilidad directa
-   □ Discriminación indirecta
-   □ Omisión de subgrupo específico
-   Explicación: [análisis concreto]
+Questions to guide this step include:
 
-5. PRECEDENTE APLICABLE:
-   [Caso, párrafo específico]
+- What basic guarantee must exist for the right to be real rather than merely declaratory?
+- What does the international legal instrument absolutely prohibit?
+- What must the state actively do in order to respect, protect, and fulfil the right?
 
-6. CONSECUENCIA JURÍDICA:
-   [Responsabilidad internacional / inconstitucionalidad / discriminación sistémica]
+### Step 3. Identify the corresponding domestic legal instrument or provision
 
-7. PROPUESTA DE REFORMA:
-   Texto vigente: [...]
-   Texto propuesto: [...]
-   Justificación: [...]
-```
+- Does the domestic legal framework contain a corresponding provision?
+- If not, is there an absolute or relative legislative omission?
+- If it exists, how is it drafted?
+- What legal effect does it produce in terms of enforceability, access, institutional duty, and remedy?
+
+### Step 4. Analyse the gap
+
+The relevant gap may take different forms:
+
+- total absence;
+- weak or declaratory recognition;
+- incompatibility;
+- regression;
+- indirect or structural discrimination;
+- omission affecting a specific subgroup;
+- implementation-oriented gap.
+
+The analysis should also determine:
+
+- whether the gap is partial or total;
+- whether it affects all rights-holders or specific subgroups;
+- whether it can be addressed by regulation or requires legislative amendment;
+- whether it is tied to wording, institutional design, access pathway, or enforceability.
+
+### Step 5. Identify the legal consequence
+
+The final step is to assess the legal significance of the gap.
+
+Relevant questions include:
+
+- Could the gap engage the state’s international responsibility?
+- Could it be challenged domestically through constitutional, treaty-based, or rights-based review?
+- Is the relevant international norm directly applicable in the domestic system?
+- Is there an international complaints pathway?
+- Is there a comparable precedent in another jurisdiction or supervisory body?
+
+---
+
+## 6. Country-sensitive consequences of incompatibility
+
+The meaning of incompatibility varies by jurisdiction.
+
+### In Mexico, ask:
+
+- Does the issue engage the constitutional parameter of rights review?
+- Could it support amparo or another domestic review pathway?
+- Is there relevant SCJN or Inter-American doctrine?
+- Is there a potential treaty-body or Inter-American petition route?
+
+### In Switzerland, ask:
+
+- Is the treaty norm directly applicable?
+- Can a domestic court apply it directly?
+- Is the issue limited by domestic rules on judicial review of federal legislation?
+- Does international law prevail in this context?
+- Is there an available international complaint mechanism for the relevant instrument?
+
+---
+
+## 7. Key interpretive materials
+
+For operational purposes, analysts should prioritise:
+
+1. treaty text;
+2. domestic constitutional text;
+3. binding domestic or regional case law where relevant;
+4. General Comments and other treaty-body interpretive materials;
+5. concluding observations;
+6. doctrinal guidance.
+
+These sources should not be treated as interchangeable.
+
+---
+
+## 8. Template for an argument of incompatibility or unconventionality
+
+```text
+ARGUMENT [NUMBER]
+
+1. CHALLENGED OR ANALYSED DOMESTIC LEGAL INSTRUMENT:
+   [Article X of Law Y]
+
+2. RIGHT AFFECTED:
+   [Name of the right + article of the relevant international legal instrument]
+
+3. CONTENT OF THE INTERNATIONAL STANDARD:
+   [Paraphrase of the relevant treaty provision + interpretive guidance from case law, a General Comment, or another relevant interpretive material]
+   Source: [instrument / decision / General Comment / paragraph]
+
+4. WAY IN WHICH THE DOMESTIC LEGAL INSTRUMENT FAILS TO MEET THE STANDARD:
+   □ Total absence of the right
+   □ Recognition without guarantee
+   □ Regression from a prior standard
+   □ Direct incompatibility
+   □ Indirect discrimination
+   □ Omission affecting a specific subgroup
+   □ Implementation-oriented deficiency
+
+   Explanation:
+   [Concrete analysis]
+
+5. RELEVANT PRECEDENT OR INTERPRETIVE MATERIAL:
+   [Case / General Comment / observation / paragraph]
+
+6. LEGAL CONSEQUENCE:
+   [Possible domestic invalidity, incompatibility with treaty obligations, discriminatory effect, or basis for international responsibility]
+
+7. POSSIBLE REFORM OR REMEDIAL PATHWAY:
+   Current wording: [...]
+   Proposed wording: [...]
+   Justification: [...]
