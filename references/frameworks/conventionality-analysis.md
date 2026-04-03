@@ -12,10 +12,10 @@ For the purposes of NormTrace, the core question is the same:
 
 This framework should therefore be used comparatively, while remaining attentive to country-specific rules on:
 
-- incorporation of international law,
-- direct applicability,
-- constitutional review,
-- judicial enforceability,
+- incorporation of international law;
+- direct applicability;
+- constitutional review;
+- judicial enforceability;
 - and the hierarchy or primacy of international obligations in domestic law.
 
 ---
@@ -34,10 +34,10 @@ Within the Inter-American system, the doctrine was articulated by the Inter-Amer
 
 For NormTrace, **conventionality analysis** should be understood as the structured assessment of whether a domestic legal instrument is compatible with the relevant international standard in terms of:
 
-- legal effect,
-- institutional design,
-- enforceability,
-- rights-holder access,
+- legal effect;
+- institutional design;
+- enforceability;
+- rights-holder access;
 - and implementation-oriented consequences.
 
 This does **not** mean simple textual comparison.
@@ -47,6 +47,17 @@ This does **not** mean simple textual comparison.
 ## 3. Country-specific configurations of rights review
 
 The method remains comparable across jurisdictions, but the domestic legal route through which international standards operate is not identical.
+
+| Dimension | Mexico | Switzerland |
+|---|---|---|
+| Main analytical label | Conventionality control | International human rights compatibility analysis |
+| Domestic entry point | Article 1 CPEUM and the constitutional parameter of rights review | Monist incorporation of international law into domestic law |
+| Role of international human rights treaties | Central to rights review | Part of domestic law, subject to direct-applicability analysis |
+| Key review question | Is the domestic legal instrument compatible with the constitutional and treaty-based rights framework? | Is the international norm part of domestic law, directly applicable, and capable of prevailing in the case at hand? |
+| Regional framework | Inter-American system | European and UN-based framework, depending on the issue |
+| Need to assess direct applicability? | Relevant, but not framed in the same way as in Swiss doctrine | Yes, essential |
+| Preferred wording in NormTrace | Conventionality control | International human rights compatibility analysis, or treaty-compatibility analysis |
+| Operational caution | Do not overstate flat equivalence among constitutional and treaty sources | Do not assume that all treaty provisions are directly applicable or judicially usable in the same way |
 
 ### 3.1 Mexico
 
@@ -71,11 +82,11 @@ For the Mexican context, the language of **conventionality control** is fully ap
 
 For Switzerland, the same analytical function should be framed somewhat differently.
 
-Switzerland follows a **monist** approach, meaning that international law becomes part of domestic law without requiring a separate act of transformation. However, not all treaty provisions are directly applicable. Direct applicability depends on whether the norm is sufficiently precise, justiciable, and addressed to authorities capable of applying it. 
+Switzerland follows a **monist** approach, meaning that international law becomes part of domestic law without requiring a separate act of transformation. However, not all treaty provisions are directly applicable. Direct applicability depends on whether the norm is sufficiently precise, justiciable, and addressed to authorities capable of applying it.
 
-International law generally takes precedence over domestic law in Switzerland, but that primacy is not absolute. Swiss doctrine and case law recognise exceptions, including the **Schubert** line of reasoning in some conflicts involving federal statutes, alongside stronger protection for international human rights guarantees such as those under the ECHR. 
+International law generally takes precedence over domestic law in Switzerland, but that primacy is not absolute. Swiss doctrine and case law recognise exceptions, including the **Schubert** line of reasoning in some conflicts involving federal statutes, alongside stronger protection for international human rights guarantees such as those under the ECHR.
 
-Switzerland is a party to the **CRPD**, but has **not ratified the Optional Protocol**, which affects the availability of individual communications under that instrument. 
+Switzerland is a party to the **CRPD**, but has **not ratified the Optional Protocol**, which affects the availability of individual communications under that instrument.
 
 #### Operational note for Switzerland
 
@@ -87,7 +98,7 @@ For the Swiss context, the analysis should therefore ask:
 - whether the issue is judicially justiciable;
 - and whether any international individual complaint pathway exists for that instrument.
 
-For Switzerland, the phrase **international human rights compatibility analysis** may often be more precise than the narrower Inter-American expression **conventionality control**, although the latter may still be used comparatively if properly qualified.
+For Switzerland, the phrase **international human rights compatibility analysis** will often be more precise than the narrower Inter-American expression **conventionality control**, although the latter may still be used comparatively if properly qualified.
 
 ---
 
@@ -104,19 +115,23 @@ Before proceeding, verify for the jurisdiction under review:
 - whether an individual communications mechanism is available;
 - and whether regional human rights mechanisms are relevant.
 
-For the current pilot and v2 comparison, the most relevant instrument remains:
+### Minimum instrument map for the current pilot and v2 comparison
 
-- **CRPD (Convention on the Rights of Persons with Disabilities)**
+| Instrument | General relevance | Mexico | Switzerland |
+|---|---|---|---|
+| **CRPD** | Core disability-rights instrument | Yes | Yes |
+| **Optional Protocol to the CRPD** | Individual communications and inquiry procedure | Yes | No |
+| **ICCPR** | Civil and political rights | Yes | Potentially relevant depending on issue |
+| **ICESCR** | Economic, social, and cultural rights | Yes | Potentially relevant depending on issue |
+| **CEDAW** | Gender-discrimination analysis | Yes | Potentially relevant depending on issue |
+| **CRC** | Child-specific analysis | Yes | Potentially relevant depending on issue |
+| **ILO Convention No. 169** | Indigenous and tribal peoples | Yes | Usually not central in the Swiss context |
+| **ACHR and related Inter-American instruments** | Regional human rights review | Yes | No |
+| **ECHR and related European human rights instruments** | Regional human rights review | No | Yes, where relevant |
 
-Additional instruments may include, depending on jurisdiction and issue:
+### Analytical note for NormTrace
 
-- ICCPR
-- ICESCR
-- CEDAW
-- CRC
-- ILO Convention No. 169
-- ACHR and related Inter-American instruments (Mexico)
-- ECHR and related European human rights instruments (Switzerland, where relevant)
+In disability-rights analysis, the CRPD is the core international legal instrument. However, it may need to be read together with broader instruments on equality, education, justice, gender, labour, detention, or social protection, depending on the issue under review.
 
 ---
 
@@ -151,13 +166,14 @@ Questions to guide this step include:
 
 The relevant gap may take different forms:
 
-- total absence;
-- weak or declaratory recognition;
-- incompatibility;
-- regression;
-- indirect or structural discrimination;
-- omission affecting a specific subgroup;
-- implementation-oriented gap.
+| Type of gap | Description | Typical legal significance |
+|---|---|---|
+| **Total absence** | No domestic provision addresses the relevant standard | Strong sign of normative misalignment |
+| **Weak or declaratory recognition** | The right is named but lacks guarantee or mechanism | Partial alignment with weak enforceability |
+| **Direct incompatibility** | Domestic provision contradicts the international standard | Possible incompatibility with treaty obligations |
+| **Regression** | Domestic law is less protective than a prior standard or framework | Serious concern, depending on the right involved |
+| **Subgroup omission** | The right is addressed generally but not for a specific subgroup | Possible indirect or structural discrimination |
+| **Implementation-oriented gap** | The norm exists but lacks remedy, authority, funding, monitoring, or coordination | Weak institutional anchoring |
 
 The analysis should also determine:
 
@@ -183,6 +199,15 @@ Relevant questions include:
 ## 6. Country-sensitive consequences of incompatibility
 
 The meaning of incompatibility varies by jurisdiction.
+
+| Question | Mexico | Switzerland |
+|---|---|---|
+| Does the issue engage the domestic rights-review framework? | Yes, through the constitutional parameter of rights review | Yes, through the domestic status and applicability of international law |
+| Can the issue support domestic judicial review? | Potentially, through amparo or another review mechanism | Potentially, depending on direct applicability and domestic review rules |
+| Is direct applicability a central analytical question? | Relevant, but not in the same doctrinal form | Yes, often decisive |
+| Is regional case law relevant? | Inter-American case law and doctrine | European or other relevant regional doctrine, where applicable |
+| Can the issue support an international complaint? | Depends on treaty and mechanism | Depends on treaty and ratification of optional or regional mechanism |
+| Key caution | Do not treat all treaty materials as equal in force | Do not assume all treaty norms are directly justiciable or prevail identically in every case |
 
 ### In Mexico, ask:
 
