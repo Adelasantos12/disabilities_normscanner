@@ -119,12 +119,12 @@ NormTrace is documented through complementary layers:
 ### Analytical frameworks
 - `references/frameworks/structural-analysis.md`
 - `references/frameworks/exclusion-analysis.md`
-- `references/frameworks/conventionality-analysis.md`
+- `references/frameworks/compatibility-analysis.md`
 - `references/frameworks/legal-argumentation.md`
 
 ### International legal instrument files
-- `references/instruments/cdpd.md`
-- `references/instruments/cdpd-key-articles.md`
+- `references/instruments/crpd.md`
+- `references/instruments/crpd-key-articles.md`
 
 ### Country modules
 - `references/countries/mexico/legal-system.md`

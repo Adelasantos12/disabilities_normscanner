@@ -1,4 +1,4 @@
-# Conventionality Analysis Framework
+# International Compatibility Analysis Framework
 
 This framework provides a structured methodology for assessing the legal compatibility between a domestic legal instrument and the applicable international standard.
 

@@ -125,7 +125,7 @@ Before producing analysis, consult repository materials in the following order.
 ### 2. Analytical frameworks
 - `references/frameworks/structural-analysis.md`
 - `references/frameworks/exclusion-analysis.md`
-- `references/frameworks/conventionality-analysis.md`
+- `references/frameworks/compatibility-analysis.md`
 - `references/frameworks/legal-argumentation.md`
 
 ### 3. Country-specific legal context
@@ -148,7 +148,7 @@ Use these in two layers.
 Read the relevant `*-key-articles.md` file first.
 
 For the current pilot:
-- `references/instruments/cdpd-key-articles.md`
+- `references/instruments/crpd-key-articles.md`
 
 Use it to identify:
 - the most relevant treaty provisions;
@@ -166,7 +166,7 @@ Read the full instrument file where the issue is:
 - or likely to require structured legal argumentation.
 
 For the current pilot:
-- `references/instruments/cdpd.md`
+- `references/instruments/crpd.md`
 
 ### 5. Case-law and interpretive support
 
@@ -416,9 +416,9 @@ At the end of this stage, the analysis should be able to specify:
 This stage compares the domestic legal framework with the relevant international legal instrument through legal function and effect rather than textual symmetry alone.
 
 ### Files to consult
-- `references/frameworks/conventionality-analysis.md`
-- `references/instruments/cdpd-key-articles.md`
-- `references/instruments/cdpd.md`
+- `references/frameworks/compatibility-analysis.md`
+- `references/instruments/crpd-key-articles.md`
+- `references/instruments/crpd.md`
 - relevant case-law notes where needed
 
 ### 3.1 Applicable standard

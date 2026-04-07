@@ -2,7 +2,7 @@
 
 This file provides a rapid operational reference to key articles of the Convention on the Rights of Persons with Disabilities (CRPD).
 
-Use this file for analytical triage to identify core CRPD articles, minimum standards, typical domestic legal red flags, and main interpretive materials. For deeper substantive reference, consult `cdpd.md`.
+Use this file for analytical triage to identify core CRPD articles, minimum standards, typical domestic legal red flags, and main interpretive materials. For deeper substantive reference, consult `crpd.md`.
 
 ## Article 5: Equality and non-discrimination
 **Minimum Standard:** Prohibition of all discrimination on the basis of disability; guarantee of equal and effective legal protection against discrimination on all grounds; provision of reasonable accommodation.

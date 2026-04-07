@@ -16,7 +16,10 @@ The broader analytical objective of assessing whether a domestic legal framework
 The more specific assessment of whether a domestic legal instrument is compatible with the relevant international legal instrument.
 
 ### Conventionality analysis
-The structured method used to assess compatibility between domestic law and applicable international human rights standards.
+The structured method used to assess compatibility between domestic law and applicable international human rights standards. **Note:** This term is jurisdiction-specific and should only be used in the Inter-American/Mexican context.
+
+### International human rights compatibility analysis
+The structured method used to assess compatibility between domestic law and applicable international human rights standards, specifically applied within the Swiss (or general monist) context as the functional equivalent of conventionality analysis.
 
 ## 2. Legal context terms
 

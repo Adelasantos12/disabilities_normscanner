@@ -1,7 +1,7 @@
 # Case-Law Notes
-## Disability Rights and Conventionality Analysis in Switzerland
+## Disability Rights and International Human Rights Compatibility Analysis in Switzerland
 
-This file provides selected case-law notes relevant to disability-rights analysis, conventionality analysis (understood in Switzerland as treaty-compatibility analysis), and the domestic implementation of international human rights standards within the Swiss legal framework.
+This file provides selected case-law notes relevant to disability-rights analysis, international human rights compatibility analysis, and the domestic implementation of international human rights standards within the Swiss legal framework.
 
 It is intended as a support document for NormTrace. It does not replace full doctrinal case analysis. Its purpose is to identify decisions and interpretive materials that may be relevant when assessing **legal compatibility**, institutional design, equality, legal capacity, accessibility, and **implementation-oriented gaps** within the Swiss domestic legal framework.
 
